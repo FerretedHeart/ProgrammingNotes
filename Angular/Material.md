@@ -1,13 +1,11 @@
-[TOC]
-
 # References
 
-- Material Design Specification - https://material.io/
+- Material Design Specification - [https://material.io/](https://material.io/)
 - Angular Material
-  - https://material.angular.io/
-  - https://github.com/angular/components
-- Material Icons Guide - https://google.github.io/material-design-icons/
-- Angular Flex Layout Demo - https://tburleson-layouts-demos.firebaseapp.com
+  - [https://material.angular.io/](https://material.angular.io/)
+  - [https://github.com/angular/components](https://github.com/angular/components)
+- Material Icons Guide - [https://google.github.io/material-design-icons/](https://google.github.io/material-design-icons/)
+- Angular Flex Layout Demo - [https://tburleson-layouts-demos.firebaseapp.com](https://tburleson-layouts-demos.firebaseapp.com)
 
 # Principles
 

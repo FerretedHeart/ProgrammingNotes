@@ -7,8 +7,7 @@
   - https://material.angular.io/
   - https://github.com/angular/components
 - Material Icons Guide - https://google.github.io/material-design-icons/
-- YouTube - https://www.youtube.com/c/AjdenTowfeek
-- Twitter - https://twitter.com/ajtowf
+- Angular Flex Layout Demo - https://tburleson-layouts-demos.firebaseapp.com
 
 # Principles
 
@@ -27,6 +26,12 @@ ng add @angular/material
 - Angular Animations
 
 # Flex Layout
+
+Install Flex Layout
+
+```
+npm i -s @angular/flex-layout + @angular/flex-layout@12.0.0-beta.34
+```
 
 ![image-20211028143852269](../Images/image-20211028143852269.png)
 

@@ -30,32 +30,32 @@
 
 ##  [JavaScript](JavaScript) 
 
- [How JavaScript Works.md](JavaScript/How JavaScript Works.md) 
+ [How JavaScript Works](JavaScript/How JavaScript Works.md) 
 
- [Resources.md](JavaScript/Resources.md) 
+ [Resources](JavaScript/Resources.md) 
 
- [Tips and Hints.md](JavaScript/Tips and Hints.md) 
+ [Tips and Hints](JavaScript/Tips and Hints.md) 
 
- [Arrays.md](JavaScript/Arrays.md) 
+ [Arrays](JavaScript/Arrays.md) 
 
- [Data Structures.md](JavaScript/Data Structures.md) 
+ [Data Structures](JavaScript/Data Structures.md) 
 
- [DOM Manipulation.md](JavaScript/DOM Manipulation.md) 
+ [DOM Manipulation](JavaScript/DOM Manipulation.md) 
 
- [Functions.md](JavaScript/Functions.md) 
+ [Functions](JavaScript/Functions.md) 
 
- [Loops.md](JavaScript/Loops.md) 
+ [Loops](JavaScript/Loops.md) 
 
- [Maps.md](JavaScript/Maps.md) 
+ [Maps](JavaScript/Maps.md) 
 
- [Objects.md](JavaScript/Objects.md) 
+ [Objects](JavaScript/Objects.md) 
 
- [Sets.md](JavaScript/Sets.md) 
+ [Sets](JavaScript/Sets.md) 
 
- [Strings.md](JavaScript/Strings.md) 
+ [Strings](JavaScript/Strings.md) 
 
 ##  [Spring](Spring) 
 
- [Spring Foundations.md](Spring/Spring Foundations.md) 
+ [Spring Foundations](Spring/Spring Foundations.md) 
 
- [Framework Fundamentals.md](Spring/Framework Fundamentals.md) 
+ [Framework Fundamentals](Spring/Framework Fundamentals.md) 

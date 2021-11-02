@@ -33,3 +33,18 @@ npm i -s @angular/flex-layout + @angular/flex-layout@12.0.0-beta.34
 
 ![image-20211028143852269](../Images/image-20211028143852269.png)
 
+## Flexbox
+
+- Flexbox CSS + mediaQuery
+
+## Sidenav
+
+- Modes: over, push, and side
+
+## Toolbar
+
+- Container for headers, titles, or actions
+
+## Media Queries
+
+- BreakpointObserver

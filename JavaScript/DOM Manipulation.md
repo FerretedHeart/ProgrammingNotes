@@ -1,3 +1,5 @@
+# **DOM Manipulation**
+
 - Document.querySelector('.modal') - Choosing a DOM element with the class name and needs a function
 - Document.getElementByID('score—1') - Choosing a DOM element by ID
 - .textElement - Changes the text element

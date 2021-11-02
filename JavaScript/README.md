@@ -1,4 +1,4 @@
-# JavaScript
+# **JavaScript**
 
  [How JavaScript Works](How JavaScript Works.md)
 

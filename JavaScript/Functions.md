@@ -1,4 +1,4 @@
-[TOC]
+# **Functions**
 
 JavaScript does not pass in references, only values. Even for non-primitive types that appear to pass in a reference, it's still a value but it's the memory reference value. Functions ARE values and objects.
 

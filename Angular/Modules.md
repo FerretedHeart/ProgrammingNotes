@@ -1,4 +1,4 @@
-[TOC]
+# **Modules**
 
 # What is an Angular Module?
 

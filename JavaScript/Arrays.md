@@ -1,3 +1,5 @@
+# **Arrays**
+
 Arrays are objects, so they have their own methods.
 
 **Push** - Add element to the end of the array

@@ -1,4 +1,6 @@
-How Styles Work
+# **Styles**
+
+# How Styles Work
 
 - Style Encapsulation
 - Angular Shadow DOM/CSS Scoping Module Emulation
@@ -9,7 +11,7 @@ How Styles Work
 - Using Preprocessors
 - :host, :host-context, ::ng-deep
 
-Scalable, Maintainable Architecture
+# Scalable, Maintainable Architecture
 
 - How to use, structure, and maintain styles
 - Use SASS to create better code
@@ -22,7 +24,3 @@ Scalable, Maintainable Architecture
 - Create small, single purpose files
 - Use a local first approach
 - Clean and simple app loading screen
-
-Creating Component Themes
-
-- 

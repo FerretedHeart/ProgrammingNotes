@@ -1,6 +1,4 @@
-[TOC]
-
-# Service
+# **Services**
 
 A class with a focused purpose.
 

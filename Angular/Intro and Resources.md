@@ -1,4 +1,4 @@
-[TOC]
+# **Intro and Resources**
 
 # Anatomy of an Angular Application
 

@@ -1,4 +1,4 @@
-[TOC]
+# **Data Binding and Pipes**
 
 # Property Binding
 

@@ -1,6 +1,4 @@
-[TOC]
-
-# Angular CLI Overview
+# **Angular CLI**
 
 A command line interface for building Angular applications.
 

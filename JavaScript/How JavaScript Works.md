@@ -1,4 +1,4 @@
-[TOC]
+# **How JavaScript Works**
 
 **<u>JavaScript</u>** - A high-level, object-oriented, multi-paradigm, interpreted or just-in-time compiled, dynamic, single-threaded, garbage-collected programming language with first-class functions and a non-blocking event loop concurrency model.
 

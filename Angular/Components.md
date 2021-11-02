@@ -1,6 +1,4 @@
-[TOC]
-
-# What is a Component?
+# **Components**
 
 - Template
   - View layout

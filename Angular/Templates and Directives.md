@@ -1,4 +1,4 @@
-[TOC]
+# **Templates and Directives**
 
 # Defining a Template in a Component
 

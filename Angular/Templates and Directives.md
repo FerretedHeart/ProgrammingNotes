@@ -64,7 +64,48 @@ Template - Use the property
 <h1 innerText={{pageTitle}}></h1>
 ```
 
-## Directive
+## Expression Restrictions
+
+- Assignments (=, +=, ++, etc)
+- new Keyword
+- Expression Chaining with ;
+- Global Namespace
+
+## Expression Recommendations
+
+- No Side-Effects
+- Fast
+- Simple
+- Idempotent
+
+# Property Bindings
+
+Property is within brackets and the expression within quotes.
+
+```html
+<img [src]="user.imageUrl"/>
+```
+
+
+
+# Event Bindings
+
+Events for when an action is taken such as clicking on a button.
+
+Event is within parenthesis and the action is within quotes.
+
+```html
+<button (click)="doSomething()">
+</button>
+```
+
+## Statement Restrictions
+
+- Assignments Except = (+=, ++, etc)
+- new Keyword
+- Global Namespace
+
+# Directive
 
 Custom HTML element or attribute used to power up and extend our HTML.
 
@@ -125,6 +166,4 @@ Custom HTML element or attribute used to power up and extend our HTML.
         ```
 
       - Result: 0, 1, 2
-
-      
 

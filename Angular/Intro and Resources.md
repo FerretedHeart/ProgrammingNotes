@@ -14,6 +14,7 @@
 - Angular - https://angular.io
 - Angular CLI - https://cli.angular.io
 - Angular (GitHub) - https://github.com/angular/angular-cli
+- Angular Practice Exercises - https://jcoop.io/angular-practice-exercises/
 - PutsReq - https://putsreq.com/ - used for making sample/fake requests for responses
 - TypeScript Playground - https://www.typescriptlang.org/play
 - Bootstrap - https://getbootstrap.com/

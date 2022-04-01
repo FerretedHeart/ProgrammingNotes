@@ -71,13 +71,13 @@
 
   - Order matters
 
-- path: Url segment for the route
+- path: a string that matches the URL in the browser address bar
 
   - No leading slash
   - '' for default route
   - '**' for wildcard route
 
-- component
+- component: the component that the router should create when navigating to this route
 
   - Not string name; not enclosed in quotes
 

@@ -3,6 +3,7 @@
 - [Intro and Resources](Intro and Resources.md)
 - [Angular CLI (Command Line Interface)](Angular CLI.md)
 - [Components](Components.md) 
+- [CRUD Checklist](CRUD Checklist.md)
 - [Data Binding and Pipes](Data Binding and Pipes.md)
 -  [Forms-Reactive](Forms-Reactive.md)
 -  [Forms-Template Driven](Forms-Template Driven.md)

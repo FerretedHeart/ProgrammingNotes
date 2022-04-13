@@ -39,7 +39,7 @@ Delete
 
 - Angular apps are dependent on RxJS
 - Installed with apps created by the CLI
-- Most HttpClieent methods return Observables
+- Most HttpClient methods return Observables
 - Lots of RxJS operators available to work with Observables
 - A library for composing data using observable sequences
 - And transforming that data using operators

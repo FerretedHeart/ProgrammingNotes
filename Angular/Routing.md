@@ -155,7 +155,11 @@ import { ActivatedRoute } from '@angular/router';
 {path: 'products/:id', component: ProductDetailComponent}
 ```
 
-Snapshot: Read the parameter one time
+Snapshot: A static image of the route information shortly after the component was created
+
+ParamMap: A dictionary of route parameter values extracted from the URL. The 'id' key returns the id of the object to fetch
+
+Route parameters are always strings. Use JavaScript Number function to convert the string to a number
 
 ```typescript
 this.route.snapshot.paramMap.get('id');

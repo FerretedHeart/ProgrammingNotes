@@ -11,6 +11,7 @@
 -  [Material](Material.md)
 -  [Modules](Modules.md)
 -  [Routing](Routing.md)
+-  [RxJS](RxJS.md)
 -  [Services](Services.md)
 -  [Styles](Styles.md)
 -  [Templates and Directives](Templates and Directives.md)

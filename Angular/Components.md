@@ -185,8 +185,13 @@ A lifecycle hook is an interface we implement to write code when a component lif
 ## Lifecycle Hooks
 
 - **OnInit**: Perform component initialization, retrieve data
-- **OnChanges**: Perform action after change to input properties
-- **OnDestroy**: Perform cleanup 
+- **OnChanges**: Perform action after change to bound input properties
+- **DoCheck**: Perform during every change detection run
+- **AfterContentInit**: Perform after content (ng-content) has been projected into view
+- **AfterContentChecked**: Perform every time the projected content has been checked
+- **AfterViewInit**: Perform after the component's view (and child views) has been initialized
+- **AfterViewChecked**: Perform every time the view (and child views) have been checked
+- **OnDestroy**: Perform cleanup once the component is about to be destroyed
 
 # What Makes a Component Nest-able?
 
@@ -245,4 +250,3 @@ A lifecycle hook is an interface we implement to write code when a component lif
   ```
 
   
-

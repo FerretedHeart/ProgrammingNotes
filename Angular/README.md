@@ -5,6 +5,7 @@
 - [Components](Components.md) 
 - [CRUD Checklist](CRUD Checklist.md)
 - [Data Binding and Pipes](Data Binding and Pipes.md)
+- [Directives](Directives.md)
 -  [Forms-Reactive](Forms-Reactive.md)
 -  [Forms-Template Driven](Forms-Template Driven.md)
 -  [HTTP](HTTP.md)

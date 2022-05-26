@@ -30,4 +30,23 @@ Comprised of keys and values
 
 Compiler Options: https://www.typescriptlang.org/docs/handbook/compiler-options.html
 
-Use the tools to create a default tsconfig.json file by typing in: tsc --init
+Use a terminal to create a default tsconfig.json file by running: tsc --init
+
+**Built-in Types**: string, number, boolean, array. Can be sed on variables and parameters following the *variableName: type* pattern.
+
+Additional Built-in Types: undefined, null, any, void. In cases where a variable can be one or more types a union type can be used. Ex. *variable: string | undefined | null*
+
+**Enum** respresents a set of name constants. They are not a "type-level" extension of JavaScript. They generate JavaScript code that is used at runtime.
+
+```typescript
+enum Prod uctType {
+  Sports,
+  HomeGoods,
+  Groceries
+}
+
+// Select from a set of values
+let productType = ProductType.Sports;
+```
+
+**Type Inference** - If a type is not assigned, TS will infer that type based on the value that was assigned at initialization.

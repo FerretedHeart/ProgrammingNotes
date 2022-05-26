@@ -16,3 +16,4 @@
 -  [Services](Services.md)
 -  [Styles](Styles.md)
 -  [Templates and Directives](Templates and Directives.md)
+-  [Typescript](Typescript.md)

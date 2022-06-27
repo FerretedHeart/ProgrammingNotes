@@ -4,3 +4,4 @@ theme: jekyll-theme-architect
 domain: ferretedheart.github.io
 url: https://ferretedheart.github.io
 baseurl: /ProgrammingNotes/
+markdown: kramdown

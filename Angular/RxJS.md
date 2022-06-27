@@ -1,8 +1,7 @@
 # **RxJS**
 
-[TOC]
-
-
+* TOC
+{:toc}
 
 ## What is RxJS?
 
@@ -213,7 +212,7 @@ When an item is emitted
 
 ## Operator: take
 
-Used for 
+Used for
 
 - Taking a specified number of items
 - Limiting unlimited Observables
@@ -298,7 +297,7 @@ ngOnInit(): void {
   //this.productService.getProducts()
   	//.subscribe(products => this.products = products);
   this.products$ = this.productService.getProducts();
-} 
+}
 ```
 
 ```html
@@ -344,7 +343,7 @@ products$ = this.requestedPage$
 	.pipe(
 		switchMap(pageNumber =>
       this.http.get<Product[]>(this.productsUrl, {
-      	params: { page: pageNumber }	
+      	params: { page: pageNumber }
     }))
 );
 ```
@@ -458,7 +457,7 @@ Transforming Array Elements
 ```typescript
 products$ = this.http.get<Product[]>(this.productsUrl)
 	.pipe(
-		map(products => 
+		map(products =>
        products.map(product => ({
       	...product,
       	price: product.price * 1.5
@@ -577,5 +576,3 @@ Use withLatestForm
 
 - To react to changes in only one Observable
 - To regulate the output of the other Observables
-
-## 

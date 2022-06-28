@@ -493,7 +493,7 @@ Creates an Observable whose vallues are defined:
 
 Static creation function, not a pipeable operator
 
-combineLatest is a **combination function**
+`combineLatest` is a **combination function**
 
 - Takes in a set of Observables, subscribes
 - Creates an output Observable
@@ -507,7 +507,7 @@ Emitted value combines the **latest** emitted value from each input Observable i
 
 Completes when all input Observables complete
 
-Use combineLatest
+Use `combineLatest`
 
 - To work with multiple data sets
 - To reevaluate state when an action occurs
@@ -526,7 +526,7 @@ Only emits one time, when all input Observables complete
 
 Static creation function, not a pipeable operator
 
-forkJoin is a **combination function**
+`forkJoin` is a **combination function**
 
 - Takes in a set of Observables, subscribes
 - Creates an output Observable
@@ -538,7 +538,7 @@ When an item is emitted from any Observable
 
 Emitted value combines the **last** emitted value from each input Observable into an array
 
-Use forkJoin
+Use `forkJoin`
 
 - To wait to process any results until all Observables are complete
 - When emitting individual items you'd likek emitted in a single array
@@ -558,7 +558,7 @@ Creates an Observable whose vallues are defined:
 
 Pipeable operator
 
-withLatestForm is a **combination function**
+`withLatestForm` is a **combination function**
 
 - Takes in a set of Observables, subscribes
 - Creates an output Observable
@@ -572,7 +572,135 @@ Emitted value combines the **latest** emitted value from each input Observable i
 
 Completes when the source Observables completes
 
-Use withLatestForm
+Use `withLatestForm`
 
 - To react to changes in only one Observable
 - To regulate the output of the other Observables
+
+# Reacting to Actions
+
+## Filtering
+
+`filter` operator: Filters to the items that match criteria specified in a provided function
+
+```typescript
+filter(item => item === 'Apple')
+```
+
+`filter` is a transformation operator
+
+- Subscribes to its input Observable
+- Creates an output Observable
+
+When an item is emitted
+
+- Item is evaluated as specified by the provided function
+- If the evaluation returns true, item is emitted to the output Observable 
+
+## Subject
+
+A **Subject** is a special type of Observable that is
+
+- An Observable with a `subscribe()` method
+
+- An Observer with `next()`, `error()`, and `complete()` methods
+
+- ```typescript
+  actionSubject = new Subject<string>();
+  ```
+
+Call `next()` to emit items
+
+```typescript
+this.actionSubject.next('tools');
+```
+
+Call `subscribe()` to receive notifications
+
+```typescript
+this.actionSubject.subscribe(
+	item => console.log(item)
+);
+```
+
+Observable is generally unicast - one observable per subscriber
+
+Subject is multicast - several subscribers
+
+## Behavior Subject
+
+A special type of Subject that
+
+- Buffters its last emitted value
+- Emits that value to any late subscribers
+- Requires a default value
+- Emits that default vallue if it hasn't yet emitted any items
+
+```typescript
+aSub = new BehaviorSubject<number>(0);
+```
+
+Use **Subject** if you don't need an initial value
+
+Use **BehaviorSubject** if you want an initial value - Important when using `combineLatest`
+
+## Reacting to Actions
+
+- Create an action stream (Subject/BehaviorSubject)
+
+- ```typescript
+  private categorySelectedSubject = new Subject<number>();
+  categorySelectedAction$ = this.categorySelectedSubject.asObservable();
+  ```
+
+  
+
+- Combine the action stream and data stream to reach to each emission from the action stream
+
+- ```typescript
+  products$ = combineLatest([
+    this.productService.products$,
+    this.categorySelectedAction$
+  ]).pipe(map(([products, categoryId]) =>
+         products.filter(product =>
+         	categoryId ? product.categoryId === categoryId : true
+         ))
+  );
+  ```
+
+- Emit a value to the action stream when an action occurs
+
+- ```typescript
+  onSelected(categoryId: string): void {
+    this.categorySelectedSubject.next(+categoryId);
+  }
+  ```
+
+- ```html
+  <select (change)="onSelected($event.target.value)">
+    <option *ngFor="let category of categories$ | async"
+            [value]="category.id">{{category.name}}</option>
+  </select>
+  ```
+
+  
+
+## startWith
+
+`startWith` operator provides an initial value - `startWith('Orange')`
+
+Emits its argument (in order), then emits from the source
+
+Used for emitting initial item(s)
+
+`startWith` is a combination operator
+
+- Subscribes to its input Observable
+- Creates an output Observable
+- When subscribed, synchronously emits all provided values
+
+When an item is emitted
+
+- Item is emitted to the output Observable
+
+Initial value(s) must be the same type as the input Observable emissions

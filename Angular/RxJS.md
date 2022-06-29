@@ -65,16 +65,16 @@ Code is **reactive** when an **input change** leads to an **automatic change in 
 
 ## Conveyer -> Observable
 
-| Apple Factory                               | RxJS                              |
-| ------------------------------------------- | --------------------------------- |
-| **Start**                                   | subscribe()                       |
-| Emits items                                 | Emits items                       |
-| **Item passes through a set of operations** | pipe() through a set of operators |
-| **As an observer**                          | Observer                          |
-| Next item, process it                       | next()                            |
-| Error occurred, handle it                   | error()                           |
-| Complete, you're done                       | complete()                        |
-| **Stop**                                    | unsubscribe()                     |
+| Apple Factory                               | RxJS                                |
+| ------------------------------------------- | ----------------------------------- |
+| **Start**                                   | `subscribe()`                       |
+| Emits items                                 | Emits items                         |
+| **Item passes through a set of operations** | `pipe()` through a set of operators |
+| **As an observer**                          | Observer                            |
+| Next item, process it                       | `next()`                            |
+| Error occurred, handle it                   | `error()`                           |
+| Complete, you're done                       | `complete()`                        |
+| **Stop**                                    | `unsubscribe()`                     |
 
 **Observer** - a collection of **callbacks** that knows how to listen to values delivered by the Observable; a **consumer** of values delivered by an Observable; an **interface** with next, error, and complete methods
 
@@ -122,7 +122,7 @@ const sub = apples$.subscribe({
 
 **Unsubscribing**
 
-- Call complete() on the subscriber
+- Call `complete()` on the subscriber
 - Use an operator that automatically completes
 - Throw an error
 - Call unsubscribe() on the subscription
@@ -182,11 +182,11 @@ of(2, 4, 6) // source observable
 ).subscribe(item => console.log(item));
 ```
 
-## Operator: map
+## Operator: `map`
 
 Used to pipe emitted items through a sequence of operators
 
-map is a **transformation** operator
+`map` is a **transformation** operator
 
 - Subscribes to its input Observable
 - Creates an output Observable
@@ -196,11 +196,11 @@ When an item is emitted
 - Item is transformed as specified by the provided function
 - Transformed item is emitted to the output Observable
 
-## Operator: tap
+## Operator: `tap`
 
 Used for debugging and performing actions outside of the flow of data (side effects) as it doesn't affect the data.
 
-tap is a **utility** operator
+`tap` is a **utility** operator
 
 - Subscribes to its input Observable
 - Creates an output Observable
@@ -210,14 +210,14 @@ When an item is emitted
 - Performs a side effect as specified by a provided function
 - Original item is emitted to the output Observable
 
-## Operator: take
+## Operator: `take`
 
 Used for
 
 - Taking a specified number of items
 - Limiting unlimited Observables
 
-take is a **filtering** operator
+`take` is a **filtering** operator
 
 - Subscribes to its input Observable
 - Creates an output Observable
@@ -230,7 +230,7 @@ When an item is emitted
 
 Only emits the defined number of items
 
-### map Operator Internals
+### `map` Operator Internals
 
 ```typescript
 import { Observable } from 'rxjs';
@@ -249,21 +249,21 @@ export function map(fn) { // Function
 
 ## Multicasting Operators
 
-### multicast()
+### `multicast()`
 
 - Takes a Subject as a parameter
 - Must call connect() to begin execution
 
-### refCount()
+### `refCount()`
 
 - Executes when observers > 0
 
-### publish()
+### `publish()`
 
 - Thin wrapper about multicast()
 - Not required to pass it a Subject
 
-### share()
+### `share()`
 
 - Executes when observers > 0
 - Re-subscribes as necessary
@@ -387,7 +387,7 @@ In the error handler:
 - Rethrow the error
 - Replace the errored Observable to continue after an error occurs
 
-#### throwError: Creates an Observable that emits no items
+#### `throwError`: Creates an Observable that emits no items
 
 Immediately emits an error notification
 
@@ -399,7 +399,7 @@ Used for: Propagating an error
 
 Or use the throw statement
 
-#### EMPTY: Is an Observable that emits no items
+#### `EMPTY`: Is an Observable that emits no items
 
 ```typescript
 return EMPTY;
@@ -415,7 +415,7 @@ An Observable created from hard-coded or local data
 
 An Observable that emits an empty value or empty array
 
-The EMPTY RxJS constant
+The `EMPTY` RxJS constant
 
 ### Change Detection Strategies
 
@@ -481,7 +481,7 @@ Types of Combination Operators/Functions
 - Flatten higher-order Observables (mergeAll)
 - Emit a combined value (combineLatest, forkJoin, withLatestFrom)
 
-## combineLatest
+## `combineLatest`
 
 Creates an Observable whose vallues are defined:
 
@@ -512,7 +512,7 @@ Use `combineLatest`
 - To work with multiple data sets
 - To reevaluate state when an action occurs
 
-## forkJoin
+## `forkJoin`
 
 Creates an Observable whose value is defined:
 
@@ -544,7 +544,7 @@ Use `forkJoin`
 - When emitting individual items you'd likek emitted in a single array
 - Don't use when working with Observables that don't complete such as action streams
 
-## withLatestFrom
+## `withLatestFrom`
 
 Creates an Observable whose vallues are defined:
 
@@ -685,7 +685,7 @@ Use **BehaviorSubject** if you want an initial value - Important when using `com
 
   
 
-## startWith
+## `startWith`
 
 `startWith` operator provides an initial value - `startWith('Orange')`
 

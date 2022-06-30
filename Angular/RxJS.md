@@ -1,7 +1,5 @@
 # **RxJS**
 
-* TOC
-{:toc}
 
 ## What is RxJS?
 

@@ -1,7 +1,7 @@
 # Programming Notes
 
-##  [Angular](Angular) 
+##  [Angular](Angular/README.md) 
 
-##  [JavaScript](JavaScript) 
+##  [JavaScript](JavaScript/README.md) 
 
-##  [Spring](Spring) 
+##  [Spring](Spring/README.md) 

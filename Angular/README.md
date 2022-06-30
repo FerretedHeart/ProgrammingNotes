@@ -1,10 +1,10 @@
-# **Angular 11+**
+# **Angular 12+**
 
-- [Intro and Resources](Intro and Resources.md)
-- [Angular CLI (Command Line Interface)](Angular CLI.md)
+- [Intro and Resources](Intro_and_Resources.md)
+- [Angular CLI (Command Line Interface)](Angular_CLI.md)
 - [Components](Components.md) 
-- [CRUD Checklist](CRUD Checklist.md)
-- [Data Binding and Pipes](Data Binding and Pipes.md)
+- [CRUD Checklist](CRUD_Checklist.md)
+- [Data Binding and Pipes](Data_Binding_and_Pipes.md)
 - [Directives](Directives.md)
 -  [Forms-Reactive](Forms-Reactive.md)
 -  [Forms-Template Driven](Forms-Template Driven.md)

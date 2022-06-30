@@ -1,5 +1,5 @@
 # Spring
 
- [Spring Foundations](Spring Foundations.md)
+ [Spring Foundations](Spring/foundations.md)
 
- [Framework Fundamentals](Framework Fundamentals.md)
+ [Framework Fundamentals](Spring/fundamentals.md)

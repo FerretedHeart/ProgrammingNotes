@@ -1,25 +1,27 @@
 # **JavaScript**
 
- [How JavaScript Works](How JavaScript Works.md)
+ [How JavaScript Works](JavaScript/how-javascript-works.md)
 
- [Resources](Resources.md)
+ [Resources](JavaScript/Resources.md)
 
-[Tips and Hints](Tips and Hints.md)
+[Tips and Hints](JavaScript/tips-hints.md)
 
--  [Arrays](Arrays.md)
+-  [Arrays](JavaScript/Arrays.md)
 
--  [Data Structures](Data Structures.md)
+-  [Data Structures](JavaScript/data-structures.md)
 
--  [DOM Manipulation](DOM Manipulation.md)
+-  [DOM Manipulation](JavaScript/dom-manipulation.md)
 
--  [Functions](Functions.md)
+-  [Functions](JavaScript/Functions.md)
 
--  [Loops](Loops.md)
+-  [Loops](JavaScript/Loops.md)
 
--  [Maps](Maps.md)
+-  [Maps](JavaScript/Maps.md)
 
--  [Objects](Objects.md)
+-  [Objects](JavaScript/Objects.md)
 
--  [Sets](Sets.md)
+-  [Sets](JavaScript/Sets.md)
+
+-  [Strings](JavaScript/Strings.md)
 
   

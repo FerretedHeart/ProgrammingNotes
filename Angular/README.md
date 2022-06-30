@@ -1,6 +1,6 @@
 # **Angular 12+**
 
-- [Intro and Resources](Intro_and_Resources.md)
+- [Intro and Resources](Angular/Intro_and_Resources.md)
 - [Angular CLI (Command Line Interface)](Angular_CLI.md)
 - [Components](Components.md) 
 - [CRUD Checklist](CRUD_Checklist.md)

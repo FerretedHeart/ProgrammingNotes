@@ -39,7 +39,7 @@ Additional Built-in Types: undefined, null, any, void. In cases where a variable
 **Enum** respresents a set of name constants. They are not a "type-level" extension of JavaScript. They generate JavaScript code that is used at runtime.
 
 ```typescript
-enum Prod uctType {
+enum ProductType {
   Sports,
   HomeGoods,
   Groceries

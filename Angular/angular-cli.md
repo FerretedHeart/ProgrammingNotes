@@ -22,14 +22,14 @@ npm install -g @angular/cli
 
 # New Project
 
-```
-ng new <project name> --flag(s)							// Format
-ng new my-app 															// Generate a new app in /my-app
-ng new my-app --dry-run											// Don't write the files, but report them
-ng new my-app --skip-install								// Generate without running npm install
-ng new my-app --defaults										// Use the defaults (no prompts)
-ng new -- help															// Displays all of the options
-```
+| Syntax                          | Description                            |
+| ------------------------------- | -------------------------------------- |
+| ng new <project name> --flag(s) | Format                                 |
+| ng new my-app                   | Generate a new app in /my-app          |
+| ng new my-app --dry-run         | Don't write the files, but report them |
+| ng new my-app --skip-install    | Generate without running npm install   |
+| ng new my-app --defaults        | Use the defaults (no prompts)          |
+| ng new --help                   | Displays all of the options            |
 
 # Serving the Application (ng serve)
 
@@ -53,11 +53,11 @@ ng new -- help															// Displays all of the options
 
 # Linting
 
-```
-ng lint my-app --help												// Show the help for linting a project
-ng lint my-app --format stylish							// Lint and format the output
-ng lint my-app --fix												// Lint and attempt to fix all problems
-```
+| Syntax                          | Description                          |
+| ------------------------------- | ------------------------------------ |
+| ng lint -my-app --help          | Show the help for linting a project  |
+| ng lint my-app --format stylish | Lint and format the output           |
+| ng lint my-app --fix            | Lint and attempt to fix all problems |
 
 # Schematic/Blueprint
 
@@ -81,11 +81,11 @@ Angular documentation: https://angular.io/guide/schematics
 
 # Testing
 
-```
-ng test   			// Runs unit tests
-ng e2e    			// Runs end-to-end test  (requires adding an external package)
-ng test --help	// Display all of the options for testing
-```
+| Syntax         | Description                                                |
+| -------------- | ---------------------------------------------------------- |
+| ng test        | Runs unit tests                                            |
+| ng e2e         | Runs end-to-end test (requires adding an external package) |
+| ng test --help | Display all of the options for testing                     |
 
 ## Common ng test Options
 

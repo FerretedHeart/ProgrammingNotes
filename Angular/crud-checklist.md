@@ -94,10 +94,8 @@ Provide an error function to handle any returned errors
 
 ```typescript
 this.ps.getProduct(id).subscribe({
-	next: (product: Product) =>
-  	this.onRetrieved(product),
-  error: err ]>
-  	this.errorMessage = err
+	next: (product: Product) => this.onRetrieved(product),
+  error: err => this.errorMessage = err
 });
 ```
 

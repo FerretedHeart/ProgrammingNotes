@@ -10,9 +10,15 @@ Developer Resources:
 
 - [MDN Web Docs (mozilla.org)](https://developer.mozilla.org/en-US/)
 - Flowcharts - https://www.diagrams.net/
+- [Codecademy JavaScript Documentation](https://www.codecademy.com/resources/docs/javascript)
+- [Codecademy Cheatsheet](https://www.codecademy.com/learn/introduction-to-javascript/modules/learn-javascript-introduction/cheatsheet)
 
 Learning and Challenges:
-	• [Codewars](https://www.codewars.com/)
+
+- [Codewars](https://www.codewars.com/)
+
+- [Codecademy Workspaces](https://www.codecademy.com/workspaces/new)
+- [Codecadmy Challenges](https://www.codecademy.com/code-challenges)
 
 Project Ideas:
 Recipes / weight conversion option

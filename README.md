@@ -4,6 +4,10 @@
 
 [Angular](https://angular.io/) is an application design framework and development platform for creating efficient and sophisticated single-page apps. The current, stable version is 14 however the documentation works for 12 and above.
 
+## [React](React/README.md)
+
+[React](https://reactjs.org/) is a JavaScript library for building user interfaces. 
+
 ##  [JavaScript](JavaScript/README.md) 
 
 [JavaScript](www.javascript.com), often abbreviated JS, is a programming language that  is one of the core technologies of the World Wide Web, alongside HTML  and CSS. 

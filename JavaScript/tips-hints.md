@@ -57,6 +57,20 @@ Arrow functions are similar to ternary operators where simple expressions are ma
 const calcAge3 = birthYear => 2037 - birthYear;
 ```
 
+### Built-In Objects
+
+[Global Objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects)
+
+[Math Global Objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)
+
+[Number Global Objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+
+If you need to get a random number between 0 and 1: `Math.random();`
+
+If you need to get a random number between 0 and 50, multiply the object by 50: `Math.random() * 50;`
+
+If you need to round down the given random number: `Math.floor(Math.random() * 50);`
+
 ## 4 Ways to Solve Any Problem
 
 1. Make sure you 100% understand the problem. Ask the right questions to get a clear picture of the problem.

@@ -1,12 +1,20 @@
 # **Loops**
 
+Repeat a given block of code on its own.
+
 # For
 
+Includes an *iterator variable* that usually appears in all three expressions. The iterator variable is initialized, checked against the stopping condition, and assigned a new value on each loop iteration.
+
+1. an *initialization* starts the loop and can be used to declare the iterator variable
+2. a *stopping condition* is the condition that the iterator variable is evaluated against
+3. an *iteration statement* is used to update the iterator variable on each loop
+
 ```javascript
-for(let i = jeanineArray.length - 1; i >= 0; i--) {
+for(let i = jeanineArray.length - 1; i >= 0; i--) { // reverse for loop
     console.log(jeanineArray[i]);
 }
- for(let exercise = 1; exercise < 4; exercise++) {
+ for(let exercise = 1; exercise < 4; exercise++) { // forward for loop
     console.log(`---- Starting exercise ${exercise}`);
      for(let rep = 1; rep < 6; rep++) {
         console.log(`Lifting weight repetition ${rep}`);
@@ -30,7 +38,11 @@ for (const [i, el] of menu.entries()) {
 }
 ```
 
+
+
 # While
+
+Best used when the number of times is unknown. Conditional variable is set outside of the loop.
 
 ```javascript
 let rep = 1;
@@ -44,6 +56,51 @@ while(rep <= 10) {
     dice = Math.trunc(Math.random() * 6) + 1;
 }
 ```
+
+
+
+# Do...While
+
+When you want a piece of code to run at least once and then loop based on the condition.
+
+```javascript
+let countString = '';
+let i = 0;
+
+do {
+  countString = countString + i;
+  i++;
+} while (i < 5);
+console.log(countString);
+
+----------------------------------------------
+
+let cupsOfSugarNeeded = 3;
+let cupsAdded = 0;
+
+do {
+  cupsAdded++;
+  console.log(cupsAdded);
+} while (cupsAdded < cupsOfSugarNeeded);
+```
+
+
+
+# The break Keyword
+
+The `break` keyword allows programs to "break" out of the loop from within the loop's block.
+
+```javascript
+for(let i = 0; i < 99; i++) {
+  if (i > 2) {
+    break;
+  }
+  console.log('Banana');
+}
+console.log('Orange you glad I broke out the loop!');
+```
+
+
 
 # Looping Objects
 
@@ -71,6 +128,8 @@ console.log(entries);
   console.log(`On ${key} we open at ${open} and close at ${close}`);
 }
 ```
+
+
 
 # ForEach
 

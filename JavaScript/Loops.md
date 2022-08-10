@@ -1,6 +1,10 @@
 # **Loops**
 
-Repeat a given block of code on its own.
+Repeat a given block of code on its own. Also known as iterators.
+
+[Iterator Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+
 
 # For
 
@@ -133,7 +137,7 @@ console.log(entries);
 
 # ForEach
 
-ForEach can be used instead of the for/of loop, but you cannot break out of it.
+ForEach can be used instead of the for/of loop, but you cannot break out of it. It will execute the same code for each element of an array but does not change the array and returns `undefined`.
 
 ```javascript
 console.log('-- ForEach ---');
@@ -152,5 +156,77 @@ movements.forEach(function(movement) {
     console.log(`Movement ${i + 1}:You withdrew ${Math.abs(mov)}`);
   }
 });
+```
+
+
+
+## The .map() Method
+
+When `.map()` is called on an array, it takes an argument of a callback function and returns a new array.
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+const bigNumbers = numbers.map(number => {
+  return number * 10;
+});
+```
+
+
+
+## The .filter() Method
+
+This method returns a new array, however `.filter()` returns an array of elements after filtering out certain elements from the original array. The callback function for the `.filter()` method should return `true` or `false` depending on the element that is passed to it.
+
+```javascript
+const words = ['chair', 'music', 'pillow', 'brick', 'pen', 'door'];
+
+const shortWords = words.filter(word => {
+  return word.length < 6;
+});
+```
+
+
+
+## The .findIndex() Method
+
+Calling `.findIndex()` on an array will return the index of the first element that evaluates to `true` in the callback function. It returns `-1` if none of the elements in the array satisfies the condition.
+
+```javascript
+const jumbledNums = [123, 25, 78, 5, 9];
+
+const lessThanTen = jumbledNums.findIndex(num => {
+  return num < 10;
+});
+```
+
+
+
+## The .reduce() Method
+
+The `.reduce()` method returns a single value after iterating through the elements of an array, thereby reducing the array.
+
+```javascript
+const numbers = [1, 2, 4, 10];
+
+const summedNums = numbers.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue
+})
+
+console.log(summedNums); // Output: 17
+```
+
+You can also add an optional second parameter to set an initial value for `accumulator` (the first argument is the callback function).
+
+```javascript
+const newNumbers = [1, 3, 5, 7];
+
+const newSum = newNumbers.reduce((accumulator, currentValue) => {
+  console.log('The value of accumulator: ' + accumulator);
+  console.log('The value of currentValue: ' + currentValue);
+  return accumulator + currentValue;
+}, 10);
+
+console.log(newSum);
 ```
 

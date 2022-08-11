@@ -329,6 +329,12 @@ console.log(residence); // Prints 'Transylvania'
 // Nested properties
 const { day } = vampire.preferences;
 console.log(day); // Prints 'stay inside'
+
+----------------------------
+
+let destinations = { x: 'LA', y: 'NYC', z: 'MIA'};
+let {x, y, z} = destinations;
+console.log(x, y, z); // Prints LA NYC MIA
 ```
 
 

@@ -14,7 +14,11 @@ To install with npm: `npx create-react-app appName`
 
 [JSX](React/jsx.md)
 
-[Components](React.components.md)
+[Class Components](React/class-components.md)
+
+[Function Components](React/function-components.md)
 
 [Lifecycle Methods](React/lifecycle.md)
+
+[Hooks](React/hooks.md)
 

@@ -1,6 +1,6 @@
-# React Components
+# Class Components
 
-### Base Class and render() Method
+## Base Class and render() Method
 
 React class components need to inherit from the `React.Component` base class.
 
@@ -16,7 +16,7 @@ class MyComponent extends React.Component {
 
 
 
-### Components
+## Components
 
 A React component is a reusable piece of code used to define the appearance, behavior, and state of a portion of a web app's interface. Components are defined as functions or as classes. React requires that the first letter of components be capitalized. If the first letter is capitalized, JSX knows it's a component, if not then it's an HTML element.
 
@@ -42,7 +42,7 @@ ReactDOM.render(
 
 
 
-### Code in render()
+## Code in render()
 
 A React component can contain JavaScript before any JSX is returned. The JS before the `return` statement informs any logic necessary to render the component.
 
@@ -71,7 +71,7 @@ class Header extends React.Component {
 
 
 
-### Object Properties as Attribute Values
+## Object Properties as Attribute Values
 
 JSX attribute values can be set through data stored in objects.
 
@@ -100,7 +100,7 @@ class SeaAnemones extends React.Component {
 
 
 
-### this.props
+## this.props
 
 Class components can access its properties with the `this.props` object.
 
@@ -119,7 +119,7 @@ ReactDOM.render(
 
 
 
-### defaultProps
+## defaultProps
 
 The `defaultProps` object contains default values to be used in case props are not passed.
 
@@ -157,7 +157,7 @@ class MyFriends extends React.Component {
 
 
 
-### this.props.children
+## this.props.children
 
 Every component's `props` object has a property named `children`. Using `this.props.children` will return everything in between a component's opening and closing JSX tags.
 
@@ -171,7 +171,7 @@ Every component's `props` object has a property named `children`. Using `this.pr
 
 
 
-### Binding this keyword
+## Binding this keyword
 
 It is common to pass event handler functions to elements in the `render()` method. If those methods update the component state, `this` must be bound so that those methods correctly update the overall component state.
 
@@ -198,7 +198,7 @@ class MyName extends React.Component {
 
 
 
-### this.setState()
+## this.setState()
 
 Components can change their state with `this.setState()`. It should always be used instead of directly modifying the `this.state` object. This takes an object which it merges with the componet's current state. If there are properties in the current state that aren't part of that object, then those properties are unchanged. The state is an object initialized in the `constructor()`. Never `setState()` in the render function because it automatically re-renders, so it will cause an infinite loop.
 
@@ -226,7 +226,7 @@ class Flavor extends React.Component {
 
 
 
-### Dynamic Data
+## Dynamic Data
 
 Components can receive dynamic information from *props*, or set their own dynamic data with *state*. Props are passed down by parent components, whereas state is created and maintained by the component itself.
 
@@ -262,4 +262,3 @@ class MyComponent extends React.Component {
   }
 }
 ```
-

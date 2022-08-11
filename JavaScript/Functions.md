@@ -34,3 +34,26 @@ We do NOT have to manually create closures, this is a JavaScript feature that ha
 
 ![image-20210910120003982](../Images/image-20210910120003982.png)
 
+
+
+## Destructuring Function Parameters
+
+Instead of accepting a complete object as an argument, a function can use destructuring to capture specific properties as named parameters.
+
+```javascript
+let truck = {
+  model: '1977 Mustand convertible',
+  maker: 'Ford',
+  city: 'Detroit',
+  year: '1977',
+  convertible: true
+};
+
+const printCarInfo = ({model, maker, city}) => {
+  console.log(`The ${model}, or ${maker}, is in the city of ${city}`);
+};
+
+printCarInfo(truck);
+// Prints: The 1977 Mustang convertible, or Ford, is in the city Detroit.
+```
+

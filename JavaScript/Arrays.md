@@ -92,3 +92,21 @@ secretMessage.splice(6,5,'know');
 console.log(secretMessage.join(' '));
 ```
 
+
+
+## Destructuring Arrays
+
+The process of converting individual elements of an array into individual variables.
+
+```javascript
+let cars = ['ferrari', 'tesla', 'cadillac'];
+let car1 = cars[0];
+let car2 = cars[1];
+let car3 = cars[2];
+console.log(car1, car2, car3); // Prints: ferrari tesla cadillac
+
+// Destructured
+let cars = [car1, car2, car3] = cars;
+console.log(car1, car2, car3); // Same output
+```
+

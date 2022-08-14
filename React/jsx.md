@@ -12,6 +12,13 @@ ReactDOM.render(
 	<h1>Render me!</h1>,  // JSX expression or component instance to be compiled and rendered
   document.getElementById('app') // HTML element we want to append it to
 );
+
+//As of React 18, you need to create the root, then render the component.
+ReactDOM.createRoot(document.getElementById('app'))
+  .render(<h1>Render me!</h1>);
+//or...
+const root = ReactDOM.createRoot(document.getElementById('app'));
+root.render(<h1>Render me!</h1>);
 ```
 
 You can't use the word `class`, instead you have to use `className` as `class` is a reserved word, but will be rendered correctly as the class attribute.

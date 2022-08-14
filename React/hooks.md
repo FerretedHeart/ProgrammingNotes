@@ -23,7 +23,7 @@ Common mistakes to avoid are calling Hooks inside of loops, conditions, or neste
 
 
 
-## Update Function Component State
+## The State Hook
 
 The State Hook is a named export from the React library.
 
@@ -61,7 +61,7 @@ Calling the state setter signals to React that the component needs to re-render,
 
 
 
-## Initialize State
+### Initialize State
 
 To initialize our state with any value we want, we pass the initial value as an argument to the `useState()` function call.
 
@@ -75,7 +75,7 @@ const [isLoading, setIsLoading] = useState(true);
 
 
 
-## Use State Setter Outside of JSX
+### Use State Setter Outside of JSX
 
 Changing value of a string as a user types into a text input field:
 
@@ -103,7 +103,7 @@ const handleChange = ({target}) => setEmail(target.value);
 
 
 
-## Set From Previous State
+### Set From Previous State
 
 Often the next value of our state is calculated using the current state. In this case, it is best practice to update state with a callback function. If we do not, we risk capturing outdated, or "stale", state values.
 
@@ -126,7 +126,7 @@ export default function Counter() {
 
 
 
-## Arrays in State
+### Arrays in State
 
 When updating an array in state, we do not just add new data to the previous array. We replace the previous array with a brand new array. This means that any information that we want to save from the previous array needs to be explicitly copied over to our new array.
 
@@ -172,7 +172,7 @@ export default function GroceryCart() {
 
 
 
-## Objects in State
+### Objects in State
 
 When working with a set of related variables, it can be very helpful to group them in an object.
 
@@ -212,3 +212,77 @@ export default function Login() {
 - We reuse our event handler across multiple inputs by using the input tag's `name` attribute to identify which input the change event came from
 
 When updating the state with `setFormState()` inside a function component, we do not modify the same object. We must ocpy over the values from the previous object when setting the next value of state.
+
+
+
+## The Effect Hook
+
+The Effect Hook runs some JavaScript code after each render, such as:
+
+- fetching data from a backend service
+- subscribing to a stream of data
+- managing timers and intervals
+- reading from and making changes to the DOM
+
+Key moments when the Effect Hook can be utilized:
+
+1. When the component is first added, or *mounted*, to the DOM and renders
+2. When the state or props change, causing the component to re-render
+3. When the component is removed, or *unmounted*, from the DOM
+
+```react
+import React, { useState, useEffect } from 'react';
+ 
+function PageTitle() {
+  const [name, setName] = useState('');
+ 
+  useEffect(() => {
+    document.title = `Hi, ${name}`;
+  });
+ 
+  return (
+    <div>
+      <p>Use the input field below to rename this page!</p>
+      <input onChange={({target}) => setName(target.value)} value={name} type='text' />
+    </div>
+  );
+}
+```
+
+
+
+### Clean Up Effects
+
+Some effects require cleanup. When we add event listeners to the DOM, it is important to remove those event listeners when we are done with them to avoid memory leaks.
+
+```react
+useEffect(() => {
+  document.addEventListener('keydown', handleKeyPress);
+  return () => {
+    document.removeEventListener('keydown', handleKeyPress);
+  };
+})
+```
+
+Because effects run after ever render and not just once, React calls our cleanup function before each re-render and before unmounting to clean up each effect call.
+
+If our effect returns a function, then the `useEffect()` Hook always treats that as a cleanup function. React will call this cleanup function before the component re-renders or unmount. Since this cleanup function is optional, it is our responsibility to return a cleanup function from our effect when our effect code could create memory leaks.
+
+
+
+### Control When Effects are Called
+
+It is common, when defining function components, to run an effect only when the component mounts (renders the first time), but not when the component re-renders. If we want to only call our effect after the first render, we pass an empty array to `useEffect()` as the second argument. This second argument is called the *dependency array*.
+
+The dependency array is used to tell the `useEffect()` method when to call our effect and when to skip it. Our effect is always called after the first render but only called again if something in our dependency array has changed values between renders.
+
+```react
+useEffect(() => {
+  alert('component rendered for the first time');
+  return () => {
+    alert('component is being removed from the DOM');
+  };
+}, []);
+```
+
+Without passing an empty array as the second argument to the `useEffect()`, those alerts would be displayed before and after every render of our component, which is clearly not when those messages are meant to be displayed. Simply passing `[]` to the `useEffect()` function is enough to configure when the effect and cleanup functions are called.

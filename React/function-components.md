@@ -1,6 +1,10 @@
 # Stateless Functional Components
 
+A React component is a function that returns React elements.
+
 We can define components as JS functions - *function components* rather than class components. They are more concise than class components.
+
+Function  names, like classes, need to be written in Pascal case which is similar to camelCase except that the first letter is capilized as well.
 
 ```react
 // A component class written in the usual way:

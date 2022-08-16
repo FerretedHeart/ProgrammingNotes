@@ -286,3 +286,20 @@ useEffect(() => {
 ```
 
 Without passing an empty array as the second argument to the `useEffect()`, those alerts would be displayed before and after every render of our component, which is clearly not when those messages are meant to be displayed. Simply passing `[]` to the `useEffect()` function is enough to configure when the effect and cleanup functions are called.
+
+
+
+### Fetch Data
+
+When the data that our components need to render doesn't change, we can pass an empty dependency array, so that the data is fetched after the first render. When the response is received from the server, we can use a state setter from the State Hook to store the data from the server's response in our local component state for future renders.
+
+An empty dependency array signals to the Effect Hook that our effect never needs to be re-run, that it doesn't depend on anything. Specifying zero dependencies means that the result of running that effect won't change and calling our effect once is enough.
+
+A dependency array that is not empty signals to the Effect Hook that it can skip calling our effect after re-renders unless the value of one of the variables in our dependency array has changed. If the value of a dependency has changed, then the Effect Hook will call our effect again.
+
+```react
+useEffect(() => {
+  document.title = `You clicked ${count} times`;
+}, [count]); // Only re-run the effect if the value stored by count changes
+```
+

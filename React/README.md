@@ -12,6 +12,8 @@
 
 To install with npm: `npx create-react-app appName`
 
+To install with npm and Vite: `npm create vite@latest`
+
 [JSX](React/jsx.md)
 
 [Class Components](React/class-components.md)

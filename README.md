@@ -6,6 +6,10 @@
 
 [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) is short for HyperText Markup Language and is the foundation of all web pages.
 
+### [CSS](CSS/README.md)
+
+[CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) or **Cascading Style Sheets** is a stylesheet language used to describe the presentation of a document written in HTML or XML. CSS describes how elements should be rendered on screen, on paper, in speech, or on other media.
+
 ###  [JavaScript](JavaScript/README.md) 
 
 [JavaScript](www.javascript.com), often abbreviated JS, is a programming language that  is one of the core technologies of the World Wide Web, alongside HTML  and CSS. 

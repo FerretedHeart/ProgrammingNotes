@@ -170,5 +170,14 @@ const strings = ['Home', 'Shop', 'About Me'];
 const listItems = strings.map(string => <li>{string}</li>);
 
 <ul>{listItems}</ul>
+
+---------------
+  
+const names = ["alice", "bob", "charlie", "danielle"]
+// -->        ["Alice", "Bob", "Charlie", "Danielle"]
+
+const capitalized = names.map((name) => {
+    return name[0].toUpperCase() + name.slice(1)
+})
 ```
 

@@ -17,13 +17,13 @@ Built-in hooks:
 There are two main rules:
 
 1. Only call Hooks from React function components.
-2. Only call Hooks at the top level, to be sure that Hooks are called in the same order each time a component renders.
+2. Only call Hooks at the top level (parent), to be sure that Hooks are called in the same order each time a component renders.
 
 Common mistakes to avoid are calling Hooks inside of loops, conditions, or nested functions.
 
 
 
-## The State Hook
+# The State Hook
 
 The State Hook is a named export from the React library.
 
@@ -38,7 +38,7 @@ const [currentState, stateSetter] = useState(initialState);
 - *current state* - the current value of this state
 - *state setter* - a function that we can use to separate the value of this state
 
-Because React returns two values in an array, we assign them to local variables.
+Because React returns two values in an array, we assign them to local variables by destructuring.
 
 ```react
 import React, { useState } from 'react';
@@ -61,7 +61,7 @@ Calling the state setter signals to React that the component needs to re-render,
 
 
 
-### Initialize State
+## Initialize State
 
 To initialize our state with any value we want, we pass the initial value as an argument to the `useState()` function call.
 
@@ -75,7 +75,7 @@ const [isLoading, setIsLoading] = useState(true);
 
 
 
-### Use State Setter Outside of JSX
+## Use State Setter Outside of JSX
 
 Changing value of a string as a user types into a text input field:
 
@@ -103,7 +103,7 @@ const handleChange = ({target}) => setEmail(target.value);
 
 
 
-### Set From Previous State
+## Set From Previous State
 
 Often the next value of our state is calculated using the current state. In this case, it is best practice to update state with a callback function. If we do not, we risk capturing outdated, or "stale", state values.
 
@@ -126,7 +126,7 @@ export default function Counter() {
 
 
 
-### Arrays in State
+## Arrays in State
 
 When updating an array in state, we do not just add new data to the previous array. We replace the previous array with a brand new array. This means that any information that we want to save from the previous array needs to be explicitly copied over to our new array.
 
@@ -172,7 +172,7 @@ export default function GroceryCart() {
 
 
 
-### Objects in State
+## Objects in State
 
 When working with a set of related variables, it can be very helpful to group them in an object.
 
@@ -215,7 +215,9 @@ When updating the state with `setFormState()` inside a function component, we do
 
 
 
-## The Effect Hook
+# The Effect Hook
+
+[A Complete Guide to useEffect](https://overreacted.io/a-complete-guide-to-useeffect/)
 
 The Effect Hook runs some JavaScript code after each render, such as:
 
@@ -251,7 +253,7 @@ function PageTitle() {
 
 
 
-### Clean Up Effects
+## Clean Up Effects
 
 Some effects require cleanup. When we add event listeners to the DOM, it is important to remove those event listeners when we are done with them to avoid memory leaks.
 
@@ -270,7 +272,7 @@ If our effect returns a function, then the `useEffect()` Hook always treats that
 
 
 
-### Control When Effects are Called
+## Control When Effects are Called
 
 It is common, when defining function components, to run an effect only when the component mounts (renders the first time), but not when the component re-renders. If we want to only call our effect after the first render, we pass an empty array to `useEffect()` as the second argument. This second argument is called the *dependency array*.
 
@@ -282,14 +284,14 @@ useEffect(() => {
   return () => {
     alert('component is being removed from the DOM');
   };
-}, []);
+}, []); // dependency array
 ```
 
 Without passing an empty array as the second argument to the `useEffect()`, those alerts would be displayed before and after every render of our component, which is clearly not when those messages are meant to be displayed. Simply passing `[]` to the `useEffect()` function is enough to configure when the effect and cleanup functions are called.
 
 
 
-### Fetch Data
+## Fetch Data
 
 When the data that our components need to render doesn't change, we can pass an empty dependency array, so that the data is fetched after the first render. When the response is received from the server, we can use a state setter from the State Hook to store the data from the server's response in our local component state for future renders.
 

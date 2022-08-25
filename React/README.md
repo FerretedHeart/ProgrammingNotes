@@ -24,3 +24,6 @@ To install with npm and Vite: `npm create vite@latest`
 
 [Hooks](React/hooks.md)
 
+[Forms](React/forms.md)
+
+[API](React/api.md)

@@ -10,8 +10,6 @@ Built-in hooks:
 - `useRef()`
 - [Full List](https://reactjs.org/docs/hooks-reference.html)
 
-
-
 ## Rules for Using Hooks
 
 There are two main rules:
@@ -59,8 +57,6 @@ function Toggle() {
 
 Calling the state setter signals to React that the component needs to re-render, so the whole function defining the component is called again. The magic of `useState()` is that is allows React to keep track of the current value of state from one render to the next.
 
-
-
 ## Initialize State
 
 To initialize our state with any value we want, we pass the initial value as an argument to the `useState()` function call.
@@ -72,8 +68,6 @@ const [isLoading, setIsLoading] = useState(true);
 1. During the first render, the *initial state argument* is used.
 2. When the state setter is called, React ignores the initial state argument and uses the new value.
 3. When the component re-renders for any other reason, React continues to use the same value from the previous render.
-
-
 
 ## Use State Setter Outside of JSX
 
@@ -101,8 +95,6 @@ const handleChange = (event) => setEmail(event.target.value);
 const handleChange = ({target}) => setEmail(target.value);
 ```
 
-
-
 ## Set From Previous State
 
 Often the next value of our state is calculated using the current state. In this case, it is best practice to update state with a callback function. If we do not, we risk capturing outdated, or "stale", state values.
@@ -123,8 +115,6 @@ export default function Counter() {
   );
 }
 ```
-
-
 
 ## Arrays in State
 
@@ -169,8 +159,6 @@ export default function GroceryCart() {
 }
 
 ```
-
-
 
 ## Objects in State
 
@@ -251,8 +239,6 @@ function PageTitle() {
 }
 ```
 
-
-
 ## Clean Up Effects
 
 Some effects require cleanup. When we add event listeners to the DOM, it is important to remove those event listeners when we are done with them to avoid memory leaks.
@@ -269,8 +255,6 @@ useEffect(() => {
 Because effects run after ever render and not just once, React calls our cleanup function before each re-render and before unmounting to clean up each effect call.
 
 If our effect returns a function, then the `useEffect()` Hook always treats that as a cleanup function. React will call this cleanup function before the component re-renders or unmount. Since this cleanup function is optional, it is our responsibility to return a cleanup function from our effect when our effect code could create memory leaks.
-
-
 
 ## Control When Effects are Called
 
@@ -289,8 +273,6 @@ useEffect(() => {
 
 Without passing an empty array as the second argument to the `useEffect()`, those alerts would be displayed before and after every render of our component, which is clearly not when those messages are meant to be displayed. Simply passing `[]` to the `useEffect()` function is enough to configure when the effect and cleanup functions are called.
 
-
-
 ## Fetch Data
 
 When the data that our components need to render doesn't change, we can pass an empty dependency array, so that the data is fetched after the first render. When the response is received from the server, we can use a state setter from the State Hook to store the data from the server's response in our local component state for future renders.
@@ -304,4 +286,10 @@ useEffect(() => {
   document.title = `You clicked ${count} times`;
 }, [count]); // Only re-run the effect if the value stored by count changes
 ```
+
+| Dependency Array | Effect called after first render               |
+| ---------------- | ---------------------------------------------- |
+| undefined        | every re-render                                |
+| Empty array      | no re-renders                                  |
+| Non-empty array  | when any value in the dependency array changes |
 

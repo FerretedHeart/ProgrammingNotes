@@ -18,7 +18,7 @@ Learning and Challenges:
 - [Codewars](https://www.codewars.com/)
 
 - [Codecademy Workspaces](https://www.codecademy.com/workspaces/new)
-- [Codecadmy Challenges](https://www.codecademy.com/code-challenges)
+- [Codecademy Challenges](https://www.codecademy.com/code-challenges)
 
 Project Ideas:
 Recipes / weight conversion option

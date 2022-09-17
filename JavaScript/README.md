@@ -8,6 +8,8 @@
 
 -  [Arrays](JavaScript/Arrays.md)
 
+-  [Classes](JavaScript/classes.md)
+
 -  [Data Structures](JavaScript/data-structures.md)
 
 -  [DOM Manipulation](JavaScript/dom-manipulation.md)
@@ -19,6 +21,8 @@
 -  [Maps](JavaScript/Maps.md)
 
 -  [Objects](JavaScript/Objects.md)
+
+-  [Promises](JavaScript/promises.md)
 
 -  [Sets](JavaScript/Sets.md)
 

@@ -16,6 +16,8 @@
 
 -  [Functions](JavaScript/Functions.md)
 
+-  [HTTP Requests](JavaScript/http-requests.md)
+
 -  [Loops](JavaScript/Loops.md)
 
 -  [Maps](JavaScript/Maps.md)

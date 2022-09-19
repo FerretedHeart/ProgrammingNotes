@@ -122,3 +122,85 @@ prom
   });
 ```
 
+## Chaining Multiple Promises
+
+One common pattern with asynchronous programming is multiple operations which depend on each other to execute or that must be executed in a certain order. We might make one request to a database and use the data returned to use to make another request.
+
+The process of  chaining promises together is called *composition*. Promises are designed with composition in mind.
+
+```javascript
+firstPromiseFunction()
+.then((firstResolveVal) => {
+  return secondPromiseFunction(firstResolveVal);
+})
+.then((secondResolveVal) => {
+  console.log(secondResolveVal);
+});
+```
+
+- We invoke a function `firstPromiseFunction()` which returns a promise.
+- We invoke `.then()` with an anonymous function as the success handler.
+- Inside the success handler we **return** a new promise - the result of invoking a second function, `secondPromiseFunction()` with the first promise's resolved value.
+- We invoke a second `.then()` to handle the logic for the second promise setting.
+- Inside that `.then()`, we have a success handler which will log the second promise's resolved value to the console.
+
+In order for our chain to work properly, we had to **return** the promise `secondPromiseFunction(firstResolveVal)`. This ensured that the return value of the first `.then()` was our second promise rather than the default return of a new promise with the same settled value as the initial.
+
+## Avoiding Common Mistakes
+
+Two common mistakes with promise composition:
+
+1. Nesting promises instead of chaining them.
+
+   ```javascript
+   returnsFirstPromise()
+     .then((firstResolveVal) => {
+     return returnsSecondValue(firstResolveVal)
+       .then((secondResolveVal) => {
+       console.log(secondResolveVal);
+     })
+   })
+   ```
+
+   Instead of having a clean chain of promises, we've nested the login for one inside the logic of the other.
+
+2. Forgetting to `return` a promise.
+
+   ```javascript
+   returnsFirstPromise()
+   .then((firstResolveVal) => {
+     returnsSecondValue(firstResolveVal)
+   })
+   .then((someVal) => {
+     console.log(someVal);
+   })
+   ```
+
+   Since forgetting to return our promise won't throw an error, this can be a really tricky thing to debug.
+
+## Using Promise.all()
+
+When dealing with multiple promises, but we don't care about the order, to maximize efficience we should use *concurrency*, multiple asynchronous operations happening together. With promises, we can do this with the function `Promise.all()`.
+
+`Promise.all()` accepts an array of promises as its argument and returns a single promise. That single promise will settle in one of two ways:
+
+- If every promise in the argument array resolved, the single promise returned from `Promise.all()` will resolve with an array containing the resolve value from each promise in the argument array.
+- If any promise from the argument array rejects, the single promise returned from `Promise.all()` will immediately reject with the reason that promise rejected. This behavior is sometimes referred to as *failing fast*.
+
+```javascript
+let myPromises = Promise.all([returnsPromOne(), returnsPromTwo(), returnsPromThree()]);
+ 
+myPromises
+  .then((arrayOfValues) => {
+    console.log(arrayOfValues);
+  })
+  .catch((rejectionReason) => {
+    console.log(rejectionReason);
+  });
+```
+
+- We declare `myPromises` assigned to invoking `Promise.all()`.
+- We invoke `Promise.all()` with an array of three promises - the returned values from functions.
+- We invoke `.then()` with a success handler which will print the array of resolved values if each promise resolved successfully.
+- We invoke `.catch()` with a failure handler which will print the first rejection message if any promise rejects.
+

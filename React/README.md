@@ -27,3 +27,5 @@ To install with npm and Vite: `npm create vite@latest`
 [Forms](React/forms.md)
 
 [Router](React/router.md)
+
+[Redux](React/redux.md)

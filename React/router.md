@@ -2,6 +2,8 @@
 
 Install React Router with npm: `npm install --save react-router-dom@5.2.0`
 
+> Note: The most recent version is v6 so there may be notes reflecting differences.
+
 Import the [BrowserRouter](https://v5.reactrouter.com/web/api/BrowserRouter) into the project:
 
 ```react
@@ -87,6 +89,8 @@ export default function Article() {
 ```
 
 ## Switch and exact
+
+> As of v6, `Switch` changed to `Routes`
 
 React Router provides several mechanisms for preventing several pages to render when the paths match more than once. The first is the `Switch` component that is imported from `react-router-dom`. When wrapped around a collection of routes, `Switch` will render the first of its child routes whose `path` prop matches the current URL. Make sure to list routes from most- to least- specific.
 
@@ -184,6 +188,8 @@ function BandPage ({ songs }) {
 
 ## Redirect
 
+> As of v6, `Redirect` changed to `Navigate`
+
 The `Redirect` component provided by React Router makes redirecting a user easy. Like a `Link` or `NavLink`, the `Redirect` component has a `to` prop. However, once the `Redirect` is rendered, the user will immediately be taken to the location specified by the `to` prop.
 
 ```react
@@ -205,6 +211,8 @@ const UserProfile = ({ loggedIn }) => {
 
 
 ## useHistory
+
+> As of v6, `useHistory` changed to `useNavigate`
 
 React Router also provides a mechanism for updating the browser's location imperatively: the `Router`'s `history` object which is accessible via the `userHistory()`' hook.
 

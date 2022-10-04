@@ -381,3 +381,274 @@ test("get the full recipe for a dish", async () => {
 ```
 
 The `.mockResolvedValueOnce()` method is used to determine what the next call to the `apiRequest()` function will resolve to. This method may be called any number of times in a test and may be useful if you'd like to finely control what each call to your mocked function resolves to.
+
+# React Testing Library
+
+[React Testing Library (RTL)](https://testing-library.com/docs/react-testing-library/intro/) is a UI-layer testing framework that helps us ensure that our React components are rendering and behaving properly.
+
+The main advantages of RTL over other UI-layer testing frameworks are:
+
+- It is built explicitly for testing React components.
+- It allows us to test our components in a way that mimics real user interactions.
+
+## Setting up React Testing Library
+
+We will need to include the `@testing-library/react` package in our project by using npm:
+
+```bash
+npm install @testing-library/react --save-dev
+```
+
+Then we can import the two essential values, `render` and `screen` into the tests.
+
+- `render()` is a function that we can use to virtually render components and make them available in our unit tests. Similar to `ReactDOM.render()`, RTL's `render()` function takes in JSX as an argument.
+- `screen` is a special object which can be thought of as a representation of the browser window. We can make sure that our virtually rendered components are available in the test by using the `screen.debug()` method which prints out all the DOM contents.
+
+```react
+import { render, screen } from '@testing-library/react'
+ 
+const Greeting = () => {
+  return (<h1>Hello World</h1>)
+};
+ 
+test('should print out the contents of the DOM' () => {
+    render(<Greeting />);
+    screen.debug();
+});
+ 
+// Output:
+<body>
+  <div>
+    <h1>
+      Hello World
+    </h1>
+  </div>
+</body>
+```
+
+## Querying with RTL
+
+To test React components, we first have to query for and extract the DOM nodes from our virtually rendered components. Then we can check and see if the extracted DOM nodes were rendered as expected. RTL has many built-in query methods that simplify this process.
+
+There are a number of `.getByX` [query methods](https://testing-library.com/docs/queries/about/) to choose from and they are all assessible as methods on the `screen` object.
+
+```react
+// .getByText() is used to extract a DOM element with text that matches a specified string
+import { render, screen } from '@testing-library/react';
+ 
+const Button = () => {
+    return <button type="submit" disabled>Submit</button>
+};
+ 
+test('A "Submit" button is rendered', () => {
+  // Render the Button component
+  render(<Button/>);
+  // Extract the <button>Submit</button> node
+  const button = screen.getByText('Submit'); 
+});
+
+
+// .getByRole() allows to extract a DOM node by its role type
+import { render } from '@testing-library/react';
+ 
+const Button = () => {
+    return <button type="submit" disabled>Submit</button>
+};
+ 
+test('extracts the button DOM node', () => {
+  // Render the Button component
+  render(<Button/>);
+  // Extract the <button>Submit</button> node
+  const button = screen.getByRole('button'); 
+});
+```
+
+We can test them using [Jest assertions](https://jestjs.io/docs/expect). These are provided by the `testing-library/jest-dom` [library](https://github.com/testing-library/jest-dom).
+
+Install with command: `npm install --save-dev @testing-library/jest-dom` and then import into the test file:
+
+```react
+import '@testing-library/jest-dom';
+```
+
+An example of the `expect.toBeDisabled()` matcher being used to test a DOM node extracted with the `screen.getByRole()` method.
+
+```react
+import {render} from '@testing-library/react';
+import '@testing-library/jest-dom';
+ 
+const Button = () => {
+    return <button type="submit" disabled>Submit</button>
+};
+ 
+test('should show the button as disabled', () => {
+  // render Button component
+  render(<Button/>);
+  // Extract <button>Submit</button> Node
+  const button = screen.getByRole('button');
+  // Assert button is disabled
+  expect(button).toBeDisabled();
+});
+```
+
+## Different Query Methods
+
+RTL has two other categories of query methods called `.queryByX` and `.findByX`.
+
+Code below shows a simple component that renders a header with the text `'Hello World!'` and then changes the text to `'Goodbye!'` 500ms after the user clicks a button.
+
+```react
+import { useState } from 'react';
+ 
+const App = () => {
+ 
+  const [text, setText] = useState('Hello World!');
+ 
+  // Changes header text after interval of 500ms
+  const handleClick = () => {
+    setTimeout(() => {
+        setText('Goodbye!');
+    }, 500);
+  };
+ 
+  return (
+    <div>
+      <h1>{text}</h1>
+      <button onClick={handleClick}>click me</button>
+    </div>
+  )
+};
+ 
+export default App;
+
+
+// Test to confirm that the header does not yet contain the text Goodbye!
+import App from './components/App';
+import { render, screen } from '@testing-library/react';
+ 
+test('Header should not show Goodbye yet', () => {
+  // Render App
+  render(<App />);
+  // Attempt to extract the header element
+  const header = screen.queryByText('Goodbye!');
+  // Assert null as we have not clicked the button
+  expect(header).toBeNull();
+});
+```
+
+The `.queryByX` methods return `null` if they don't find a DOM node, unlike the `.getByX` methods which throw an error and immediately cause the test to fail. This is useful when asserting that an element is NOT present in the DOM.
+
+The `.findByX` methods are used to query for asynchronous elements which will eventually appear in the DOM. For example, if the user is waiting for the result of an API call to resolve before data is displayed. The `.findByX` methods work by returning a Promise which resolves when the queried element renders in the DOM. As such, the `async/await` keywords can be used to enable asynchronous logic.
+
+```react
+import App from './components/App';
+import { render, screen } from '@testing-library/react';
+ 
+test('should show text content as Goodbye', async () => {
+  // Render App
+  render(<App />);
+  // Extract button node 
+  const button = screen.getByRole('button');
+  // click button
+  userEvent.click(button);
+  // Wait for the text 'Goodbye!' to appear
+  const header = await screen.findByText('Goodbye!');
+  // Assert header to exist in the DOM
+  expect(header).toBeInTheDocument();
+});
+```
+
+We use `.findByText()` since the `'Goodbye!'` messag does not render immediately. This is because our `handleClick()` function changes the text after an internal of 500ms. So we have to wait a bit before the new text is rendered in the DOM.
+
+Observe the `async/await` keywords in the example above. Remember that `findBy` methods return a Promise and thus the callback function that carries out the unit test must be identified as `async` whicl the `screen.findByText()` method must be preceded by `await`.
+
+## Mimicking User Interactions
+
+Now it's time to learn how to mimic user interactions e.g. clicking a checkbox, typing text, etc. This process has been made easier with the help of another library in the `@testing-library` suite: `@testing-library/user-event`.
+
+The library can be installed with the command: `npm install --save-dev @testing-library/user-event`
+
+```react
+// import a single object
+import userEvent from '@testing-library/user-event'
+
+// follows the same syntax pattern
+userEvent.interactionType(nodeToInteractWith);
+
+// example of mimicking a user filling in a text box
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom';
+
+const GreetingForm = () => {
+  return(
+  <form>
+      <label htmlFor='greeting'>Greeting:</label>
+      <input type='text' id='greeting' />
+      <input type='submit' value='Submit' />
+  </form>
+  );
+};
+
+test('should show text content as Hey Mack!', () => {
+  // Render the component to test
+  render(<GreetingForm />);
+  // Extract the textbox component
+  const textbox = screen.getByRole('textbox');
+  // Simulate typing 'Hey Mack!'
+  userEvent.type(textbox, 'Hey Mack!');
+  // Assert textbox has text content 'Hey Mack!'
+  expect(textbox).toHaveValue('Hey Mack!');
+});
+```
+
+In the example above, the `userEvent.type()` method is used which accepts a DOM node to interact with (`textbox`) and a string to type into that node ('Hey Mack!').
+
+The `userEvent` object has methods for [simulating clicks](https://testing-library.com/docs/ecosystem-user-event/#clickelement-eventinit-options) (`userEvent.click()`), [hovering](https://testing-library.com/docs/ecosystem-user-event/#hoverelement) (`userEvent.hover()`), and others. Refer to the [docs](https://github.com/testing-library/user-event) to find the best method.
+
+## The waitFor() method
+
+RTL provides another function that can be used for asynchronous testing that will be perfect for testing components that disappear asynchronously - the `waitFor()` function.
+
+```react
+import { waitFor } from '@testing-library/react'
+```
+
+The `waitFor()` function returns a Promise, so we have to preface its call with the `await` keyword. It takes a callback function as an argument where we can make asynchronous function calls, perform queries, and/or run assertions.
+
+```react
+await waitFor(() => {
+  expect(someAsyncMethod).toHaveBeenCalled();
+  const someAsyncNode = screen.getByText('hello world');
+  expect(someAsyncNode).toBeInTheDocument();
+});
+```
+
+To test that a component disappears asynchronously, we can combine the `waitFor()` function with `.queryByX()` methods:
+
+```react
+import { waitFor, render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import userEvent from '@testing-library/user-event';
+import { Header } from './header.js'
+
+test('should remove header display', async () => {
+  // Render Header
+  render(<Header />)
+  // Extract button node
+  const button = screen.getByRole('button');
+  // click button
+  userEvent.click(button);
+  
+  // Wait for the element to be removed asynchronously
+  await waitFor(() => {
+    const header = screen.queryByText('Hey Everybody');
+    expect(header).toBeNull()
+  })
+});
+```
+
+In our unit test the header will be removed 250ms after the button has been clicked. The callback function inside `waitFor()` confirms this by querying for this element and then waiting for the `expect()` assertion to pass.
+
+The `waitFor()` method can also optionally accept an `options` object as a second argument. This object can be used to control how long to wait for before aborting and more. More info about `options` can be found [here](https://testing-library.com/docs/dom-testing-library/api-async/#waitfor).

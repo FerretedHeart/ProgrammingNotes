@@ -239,6 +239,11 @@ function PageTitle() {
 }
 ```
 
+`useEffect()` accepts two arguments:
+
+1. A callback function which is executed after the component renders
+2. A dependency array which determines how often the effect is executed
+
 ## Clean Up Effects
 
 Some effects require cleanup. When we add event listeners to the DOM, it is important to remove those event listeners when we are done with them to avoid memory leaks.
@@ -292,4 +297,59 @@ useEffect(() => {
 | undefined        | every re-render                                |
 | Empty array      | no re-renders                                  |
 | Non-empty array  | when any value in the dependency array changes |
+
+
+
+# Custom Hooks
+
+[Custom hooks](https://reactjs.org/docs/hooks-custom.html) are JavaScript functions that use other hooks. They help share stateful logic that we may otherwise need to reuse throughout our application.
+
+As a convention, custom hooks should have names that start with `use`. Additionally, they should also follow the rules of hooks.
+
+```react
+// useToggle.js
+export const useToggle = (initialState = false) => {
+  // Use the `initialState` argument to initialize the state
+  const [state, setState] = useState(initialState);
+ 
+  // Perform an animation each time the state changes
+  useEffect(() => {
+    performToggleAnimation(state);
+  }, [state])
+ 
+  // Create an easy-to-use toggle function
+  const toggle = () => { setState(state => !state) }
+ 
+  // Return the state value and the toggle function
+  return [state, toggle]
+}
+```
+
+In this example, we create a custom hook called `useToggle()` that:
+
+- uses `useState()` to manage a toggle state value
+- uses `useEffect` to run a toggling animmation effect
+- creates a `toggle()` function to interact with the `setState()` function
+
+Now we can just import and use `useToggle()` in other areas of the application.
+
+```react
+import { useToggle } from './useToggle';
+const DarkMode = () => {
+  // Get the state and toggle function from useToggle()
+  // We'll use an initial value of true
+  const [state, toggle] = useToggle(true);
+  return (
+    <button onClick={toggle}> 
+      {state ? 'On' : 'Off'}
+    </button>
+  )
+}
+```
+
+Custom hooks present a number of advantages when used properly in an application:
+
+- They allow us to abstract our code, hide complex logic, as well as share stateful logic between multiple components.
+- When using a custom hook in two or more components, all state and effects inside are fully isolated. This is true of `useState()` and `useEffect()` as well. This means that any data from one component won't "bleed over" into another.
+- By creating a separate file from which we export the custom hook, we can import it into any part of our application.
 

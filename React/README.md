@@ -8,6 +8,8 @@
 
 [Create React App](https://create-react-app.dev/docs/getting-started/)
 
+[Debugging in VS Code](https://code.visualstudio.com/docs/nodejs/reactjs-tutorial#_debugging-react)
+
 ## Tips and Hints
 
 To install with npm: `npx create-react-app appName`
@@ -23,6 +25,8 @@ To install with npm and Vite: `npm create vite@latest`
 [Lifecycle Methods](React/lifecycle.md)
 
 [Hooks](React/hooks.md)
+
+[Context](React/context.md)
 
 [Forms](React/forms.md)
 

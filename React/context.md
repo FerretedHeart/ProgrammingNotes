@@ -150,3 +150,21 @@ const CounterApp = () => {
 }
 ```
 
+## Nested Providers
+
+A Context Provider may be a child in the application tree undernearth an earlier Context Provider. Components subscribing to a Context's Provider will receive the value for the `.Provider` component closest to them in the application tree. This pattern is sometimes referred to as "nesting".
+
+```react
+<GreeterContext.Provider value="Salut!">
+  <HighLevelComponent> {// GreeterContext's value is "Salut!" here}
+ 
+    <GreeterContext.Provider value="Hallo!">  
+      <LowLevelComponent /> {// GreeterContext's value is "Hallo!" here}
+    </GreeterContext.Provider>
+ 
+  </RootComponent>
+</GreeterContext.Provider>
+```
+
+In this example, we have two components that are used within the `GreeterContext.Provider`: `HighLevelComponent` and `LowLevelComponent`. Each component will use the value of the nearest `GreeterContext.Provider`. In this case, `HighLevelComponent` will have the value `"Salut!"` when using GreeterContext while the `LowLevelComponent` will have the value `"Hallo!"`.
+

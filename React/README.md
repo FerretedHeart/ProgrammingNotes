@@ -35,3 +35,5 @@ To install with npm and Vite: `npm create vite@latest`
 [Redux](React/redux.md)
 
 [Unit Testing](React/unit-testing.md)
+
+[Error Boundaries](React/error-boundaries.md)

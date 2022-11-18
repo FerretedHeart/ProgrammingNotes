@@ -68,6 +68,7 @@ const [isLoading, setIsLoading] = useState(true);
 1. During the first render, the *initial state argument* is used.
 2. When the state setter is called, React ignores the initial state argument and uses the new value.
 3. When the component re-renders for any other reason, React continues to use the same value from the previous render.
+4. If there is a need to have a complicated computation done for the initial value, put it in a function so that it is only called once.
 
 ## Use State Setter Outside of JSX
 
@@ -299,6 +300,26 @@ useEffect(() => {
 | Non-empty array  | when any value in the dependency array changes |
 
 
+
+# The Context Hook
+
+To use context in a function component, you no longer need to wrap your JSX in a consumer. All you need to do is pass your context to the `useContext` hook and it will do the rest.
+
+```react
+function GrandChildComponent() {
+  const {theme, setTheme} = useContext(ThemeContext)
+  
+  return (
+  	<>
+    	<div>The theme is {theme}</div>
+    	<button onClick={() => setTheme('light')}>Change to Light Theme</button>
+  )
+}
+```
+
+We were able to cut out all of the consumer portion of the context and remove all of the complex nesting. Now context works like a normal function where you call the context and it will give you the values inside of it for you to use later in the code. This drastically simplifies code related to context and makes working with context much easier.
+
+Setting up a context provider for use with the `useContext` hook is exactly the same as you would do for a normal context consumer, so you can use all the same code for the context provider portion of the class component.
 
 # Custom Hooks
 

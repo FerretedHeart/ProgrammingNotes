@@ -301,6 +301,222 @@ useEffect(() => {
 
 
 
+# The Ref Hook
+
+Refs in React are incredibly useful for accessing and manipulating DOM elements directly. Refs are also amazing at persisting data between renders which makes it possible to store persisted component data without causing a re-render when it is changed.
+
+In order to work with refs in React you need to first initialize a ref which is what the `useRef` hook is for. This hook is very straightforward, and takes an initial value as the only argument.
+
+```react
+useRef(initialValue)
+```
+
+This hook then returns a ref for you to work with.
+
+```react
+const myRef = useRef(null)
+```
+
+In the above example we have created a ref called `myRef` and set its default value to `null`. This means that `myRef` is now equal to an object that looks like this.
+
+```react
+{ current: null }
+```
+
+This is because a ref is always an object with a single `.current` property which is set to the current value of the ref. If we were to instead create a ref with a default value of `0` it would look like this.
+
+```react
+const myRef = useRef(0)
+console.log(myRef)
+// { current: 0 }
+```
+
+Now this seems like a lot of work in order to save a single value, but what makes refs so powerful is the fact that they are persisted between renders. I like to think of refs very similarly to state, since they persist between renders, but refs do not cause a component to re-render when changed.
+
+Imagine that we want to count the number of times a component re-renders. Here is the code to do so with state and refs.
+
+```react
+function State() {
+  const [rerenderCount, setRerenderCount] = useState(0);
+
+  useEffect(() => {
+    setRerenderCount(prevCount => prevCount + 1);
+  });
+
+  return <div>{rerenderCount}</div>;
+}
+function Ref() {
+  const rerenderCount = useRef(0);
+
+  useEffect(() => {
+    rerenderCount.current = rerenderCount.current + 1;
+  });
+
+  return <div>{rerenderCount.current}</div>;
+}
+```
+
+Both of these components will correctly display the number of times a component has been re-rendered, but in the state example the component will infinitely re-render itself since setting the state causes the component to re-render. The ref example on the other hand will only render once since setting the value of a ref does not cause any re-renders.
+
+## How To Use Refs
+
+Now that we understand refs are just an object for storing a value that persists between renders, let's talk about when you would need to use a ref.
+
+The most common use case for refs in React is to reference a DOM element. Because of how common this use case is every DOM element has a ref property you can use for setting a ref to that element. For example, if you wanted to focus an input element whenever a button was clicked you could use a ref to do that.
+
+```jsx
+function Component() {
+  const inputRef = useRef(null)
+
+  const focusInput = () => {
+    inputRef.current.focus()
+  }
+
+  return (
+    <>
+      <input ref={inputRef} />
+      <button onClick={focusInput}>Focus Input</button>
+    </>
+  )
+}
+```
+
+As you can see in the code above we use the `ref` property on the input element to set the current value of `inputRef` to the input element. Now when we click the button it will call `focusInput` which uses the current value of the `inputRef` variable to set the focus on the input element.
+
+Being able to access any DOM element directly with a ref is really useful for doing things like setting focus or managing other attributes that you cannot directly control in React, but it can be easy to abuse this power. I often see newer React developers using refs to dynamically add and remove elements (`appendChild`, `removeChild`, etc.) in a component instead of having React do that for you. This leads to inconsistencies between the actual DOM and the React virtual DOM which is very bad.
+
+## Using Refs Beyond The DOM
+
+While most use cases for refs lie with referencing DOM elements, refs can also be used for any form of storage that is persisted across component renders. A very common use case for this would be storing the previous value of a state variable.
+
+```jsx
+function Component() {
+  const [name, setName] = useState('Kyle')
+  const previousName = useRef(null)
+
+  useEffect(() => {
+    previousName.current = name
+  }, [name])
+
+  return (
+    <>
+      <input value={name} onChange={e => setName(e.target.value)} />
+      <div>{previousName.current} => {name}</div>
+    </>
+  )
+}
+```
+
+The above code will update the `previousName` ref every time the name changes so that it always has the previous value of the name variable stored in it.
+
+# The Memo Hook
+
+The most basic form of memoization in React is the `useMemo` hook. The syntax for this hook is actually the exact same as `useEffect` since they both work in a similar way. The first argument of `useMemo` is a function that does the complex calculation you want to memoize, and the second argument is an array of all dependencies for that memoization.
+
+```js
+const result = useMemo(() => {
+  return slowFunction(a)
+}, [a])
+```
+
+As you can see in the above example, we want to memoize `slowFunction` which depends on `a`. To do this, all we did was wrap the `slowFunction` in our `useMemo` function and used the argument `a` in the array of dependencies. This code essentially does the exact same thing as our previous code for memoization, since as long as `a` stays the same the `slowFunction` will not be re-run and instead the cached value will be used. This is the most common way `useMemo` is used, but there is a second common use case which is referential equality.
+
+### Referential Equality
+
+If you are unfamiliar with referential equality it essentially defines whether or not the references of two values are the same. For example `{} === {}` is false because it is checking referential equality. While both of the objects are empty, they reference different places in memory where the object is stored. Because of this, they are not referentially equal and this comparison returns false. *If you are interested in learning more about reference vs value comparisons checkout [this video](https://youtu.be/-hBJz2PPIVE).*
+
+This referential equality is important when it comes to dependency arrays, for example in `useEffect`.
+
+```js
+function Component({ param1, param2 }) {
+  const params = { param1, param2, param3: 5 }
+
+  useEffect(() => {
+    callApi(params)
+  }, [params])
+}
+```
+
+At first glance it may seem this `useEffect` works properly, but since the `params` object is created as a new object each render this is actually going to cause the effect to run every render since the reference of `params` changes each render. `useMemo` can fix this, though.
+
+```js
+function Component({ param1, param2 }) {
+  const params = useMemo(() => {
+    return { param1, param2, param3: 5 }
+  }, [param1, param2])
+
+  useEffect(() => {
+    callApi(params)
+  }, [params])
+}
+```
+
+Now if `param1` and `param2` do not change the `params` variable will be set to the cached version of `params` which means the reference for `params` will only change if `param1`, or `param2` change. This referential equality is really useful when comparing objects in dependency arrays, but if you need to use a function in a dependency array you can use the `useCallback` hook.
+
+# The Callback Hook
+
+`useCallback` works nearly identically to `useMemo` since it will cache a result based on an array of dependencies, but `useCallback` is used specifically for caching functions instead of caching values.
+
+```js
+const handleReset = useCallback(() => {
+  return doSomething(a, b)
+}, [a, b])
+```
+
+This syntax may look exactly the same as `useMemo`, but the main difference is that `useMemo` will call the function passed to it whenever its dependencies change and will return the value of that function call. `useCallback` on the other hand will not call the function passed to it and instead will return a new version of the function passed to it whenever the dependencies change. This means that as long as the dependencies do not change then `useCallback` will return the same function as before which maintains referential equality.
+
+In order to further understand the differences between `useCallback` and `useMemo` here is a quick example where both will return the same value.
+
+```js
+useCallback(() => {
+  return a + b
+}, [a, b])
+
+useMemo(() => {
+  return () => a + b
+}, [a, b])
+```
+
+As you can see `useCallback` will return the function passed to it, while `useMemo` is returning the result of the function passed to it.
+
+### Referential Equality
+
+Just like with `useMemo`, `useCallback` is used to maintain referential equality.
+
+```jsx
+function Parent() {
+  const [items, setItems] = useState([])
+  const handleLoad = (res) => setItems(res)
+
+  return <Child onLoad={handleLoad} />
+}
+
+function Child({ onLoad }) {
+  useEffect(() => {
+    callApi(onLoad)
+  }, [onLoad])
+}
+```
+
+In the above example the `handleLoad` function is re-created every time the `Parent` component is rendered. This means that the `Child` component's `useEffect` will re-run ever render since the `onLoad` function has a different referential equality each render. To fix this we need to wrap the `handleLoad` in a `useCallback`.
+
+```jsx
+function Parent() {
+  const [items, setItems] = useState([])
+  const handleLoad = useCallback((res) => setItems(res), [])
+
+  return <Child onLoad={handleLoad} />
+}
+
+function Child({ onLoad }) {
+  useEffect(() => {
+    callApi(onLoad)
+  }, [onLoad])
+}
+```
+
+Now the `handleLoad` function will never change, thus the `useEffect` in the `Child` component will not be called on each re-render.
+
 # The Context Hook
 
 To use context in a function component, you no longer need to wrap your JSX in a consumer. All you need to do is pass your context to the `useContext` hook and it will do the rest.

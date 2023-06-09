@@ -2,17 +2,13 @@
 
 ## Helpful Links
 
-[React Documentation](https://reactjs.org/docs/hello-world.html)
+[React Documentation](https://react.dev/reference/react)
 
-[Supported Handled Events](https://reactjs.org/docs/events.html#supported-events)
-
-[Create React App](https://create-react-app.dev/docs/getting-started/)
+[Create React App with Vite](https://vitejs.dev/guide/)
 
 [Debugging in VS Code](https://code.visualstudio.com/docs/nodejs/reactjs-tutorial#_debugging-react)
 
 ## Tips and Hints
-
-To install with npm: `npx create-react-app appName`
 
 To install with npm and Vite: `npm create vite@latest`
 

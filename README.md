@@ -12,7 +12,11 @@
 
 ###  [JavaScript](JavaScript/README.md) 
 
-[JavaScript](www.javascript.com), often abbreviated JS, is a programming language that  is one of the core technologies of the World Wide Web, alongside HTML  and CSS. 
+[JavaScript](www.javascript.com), often abbreviated JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS. 
+
+### [TypeScript](TypeScript/README.md)
+
+[TypeScript]([https://www.typescriptlang.org/) adds additional syntax to JavaScript to support a tighter integration with your editor. Catch errors early in your editor.
 
 ## [Java](Java/README.md)
 
@@ -24,7 +28,7 @@
 
 ### [React](React/README.md)
 
-[React](https://reactjs.org/) is a JavaScript library for building user interfaces. 
+[React](https://react.dev) is a JavaScript library for building user interfaces. 
 
 ###  [Spring](Spring/README.md) 
 

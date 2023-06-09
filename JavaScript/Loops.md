@@ -4,8 +4,6 @@ Repeat a given block of code on its own. Also known as iterators.
 
 [Iterator Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
-
-
 # For
 
 Includes an *iterator variable* that usually appears in all three expressions. The iterator variable is initialized, checked against the stopping condition, and assigned a new value on each loop iteration.

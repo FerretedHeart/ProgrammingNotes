@@ -59,5 +59,33 @@ const reviews: {
         date: '27-03-2021'
     },
 ]
+
+const properties: {
+    image: string;
+    title: string;
+    perNightPrice: number;
+    location: {
+        street: string;
+        city: string;
+        zip: number;
+        country: string;    
+    };
+    contact: string;
+    isAvailable: boolean;
+}[] = [
+    {
+        image: 'image.jpg',
+        title: 'Bungalow',
+        perNightPrice: 200,
+        location: {
+            street: '100 Main Street',
+            city: 'Miami',
+            zip: 33156,
+            country: 'USA'
+        },
+        contact: 'annie@me.com',
+        isAvailable: true
+    }
+]
 ```
 

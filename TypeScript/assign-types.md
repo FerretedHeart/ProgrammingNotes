@@ -1,6 +1,6 @@
 # Assign Types
 
-## Variables:
+## Variables
 
 ```typescript
 let age: number = 34
@@ -11,13 +11,13 @@ let isOpen: boolean
 
 For `const` variables, you don't need to assign the type with the assigned value as it would be redundant.
 
-## Functions:
+## Functions
 
 ```typescript
 function showReviewTotal(value: number, reviewer: string, isLoyalty: boolean) {}
 ```
 
-## Objects and Arrays:
+## Objects and Arrays
 
 ```typescript
 const you: {
@@ -87,5 +87,13 @@ const properties: {
         isAvailable: true
     }
 ]
+```
+
+## Tuples
+
+Allow you to express an array with a fixed number of elements whose types are known.
+
+```typescript
+const contact: [number, string] = [8609991000, 'somedude@gmail.com']
 ```
 

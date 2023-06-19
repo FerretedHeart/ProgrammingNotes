@@ -21,6 +21,8 @@ HTML is organized into a family tree structure. HTML elements can have parents, 
 
 Blocks: `<div></div>`
 
+Anchor tags: `<a href='https://google.com' target="_blank">Go to Google</a>`
+
 Paragraphs: `<p>This is a paragraph.</p>`
 
 Breaks: `<br/>`
@@ -34,22 +36,34 @@ Links: `<a href="..." target="_blank">This will go to a link.</a>`
 Lists:
 
 ```html
-<!-- Ordered lists -->
+<!-- Ordered lists (1, 2, a, b, etc) -->
 <ol>
   <li>One</li>
   <li>Two</li>
 </ol>
 
-<!-- Unordered lists -->
+<!-- Unordered lists (bullets) -->
 <ul>
   <li>One</li>
   <li>Two</li>
 </ul>
 ```
 
-
-
 [Forms](HTML/forms.md)
+
+## Document Structure
+
+```html
+<!doctype html>
+<html>
+	<head> // Metadata (styles, title, scripts, etc)
+		<title>Sample</title>
+	</head>
+	<body> // The tags you see on the page
+		<p>Sample paragraph.</p>
+	</body>
+</html>
+```
 
 
 

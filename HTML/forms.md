@@ -23,6 +23,10 @@ The `<input>` element has a `type` attribute which determines how it renders on 
   - `checkbox` for multiple choices and displays a box with assigned `value`
   - `radio` for selecting only one option
   - `submit` which renders a button for sending the form
+  - `date` will render a date picker
+  - `time` will render a time picker
+  - `color` will render a color palette
+  - `file` will allow to upload a file by providing a button to be able to choose a file from your local device storage
 - `name` - name of the input field, which is required
 - `value` - what is typed into the text field, which can start with a default value that displays within the input field
 - `step` - for number types, creates arrows inside the field to increase or decrease the value

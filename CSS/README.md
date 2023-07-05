@@ -2,6 +2,8 @@
 
 [Cascading Style Sheets](https://developer.mozilla.org/en-US/docs/Web/CSS) for describing how elements should look on screen.
 
+[Tips and Tricks](tips.md)
+
 ![css-syntax](css-syntax.png)
 
 `.class`- when appending using a class, a period must be appended to the class's name.

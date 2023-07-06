@@ -30,4 +30,35 @@ Since most browsers render 62.5% font-size at 10px, this means all of your REM f
   }
   ```
 
-  
+
+# Calc()
+
+Performing calculations on CSS property values can be extremely powerful, especially when crafting a responsive web design. With support in all modern browsers, `calc()` is very handy and can be used in more complex scenarios.
+
+```css
+.element {
+	width: calc(50% - 20px);
+	margin-left: calc(5vw + 10px);
+	font-size: calc(1rem + 0.5vw);
+}
+
+/* Set the base font size, minimum font size, and scaling factor */
+:root {
+	--base-font-size: 16px;
+	--min-font-size: 14px;
+	--max-font-size: 24px;
+	--scale-factor: 1.5;
+}
+
+/* Use the variables with calc() and clamp() to create fluid fonts */
+body {
+	font-size: calc(var(--min-font-size) + var(--scale-factor) * 1vw);
+	font-size: clamp(
+		var(--min-font-size),
+		var(--base-font-size) + var(--scale-factor) * 1vw,
+		var(--max-font-size)
+	);
+}
+```
+
+This more advanced example is using CSS variables to define the base font size, minimum and maximum font sizes, and a scaling factor. The `calc()` function is creating a font size that scales with the viewport width, while the `clamp()` function ensures that the font size stays within the specified minimum and maximum limits.

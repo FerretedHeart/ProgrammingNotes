@@ -31,7 +31,7 @@ Since most browsers render 62.5% font-size at 10px, this means all of your REM f
   ```
 
 
-# Calc()
+## Calc()
 
 Performing calculations on CSS property values can be extremely powerful, especially when crafting a responsive web design. With support in all modern browsers, `calc()` is very handy and can be used in more complex scenarios.
 
@@ -62,3 +62,42 @@ body {
 ```
 
 This more advanced example is using CSS variables to define the base font size, minimum and maximum font sizes, and a scaling factor. The `calc()` function is creating a font size that scales with the viewport width, while the `clamp()` function ensures that the font size stays within the specified minimum and maximum limits.
+
+## System Fonts
+
+Most of us haven't used system fonts in our website projects for years, ever since the advent of web fonts revolutionized typography across the landscape of the internet in the late 2000s. But there are some very real benefits to using system fonts. Let's take a look at some reasons to reconsider our stance on them.
+
+### 1. Faster Loading Times
+
+System fonts are already installed on the user's device, which means they don't need to be downloaded from the web server like web fonts. This can result in faster loading times for web pages, which is especially important for mobile devices as well as SEO.
+
+### 2. Consistency Across Devices
+
+System fonts are consistent across different devices and operating systems. This means that the typography used in web design will appear the same for all users, regardless of the device they are using, creating a more cohesive and consistent design experience for all users.
+
+### 3. Accessibility
+
+Using system fonts can also improve accessibility for users with disabilities. Some users may have custom font settings on their devices that they rely on for better readability. By using system fonts, web designers can ensure that their content is accessible to a wider range of users.
+
+### 4. No More FOUT
+
+A “flash of unstyled text” (FOUT) is the phenomenon in which a web page loads with the type set using system fonts before switching to the intended web font. This delay is caused by the web fonts being downloaded to the user’s device. Using system fonts obviously eliminates this issue.
+
+```css
+/* Some system font stock samples */
+.charter {
+	font-family: Charter, Bitstream Charter, serif;
+}
+.georgia {
+	font-family: Georgia, Times, Times New Roman, serif;
+}
+.palatino {
+	font-family: Palatino, Palatino Linotype, Palatino LT STD, Book Antiqua, Georgia, serif;
+}
+.system {
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+	/* Only supported on Chromium-based browsers and Safari */
+	font-family: system-ui;
+}
+```
+

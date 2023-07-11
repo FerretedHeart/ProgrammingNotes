@@ -34,3 +34,6 @@
 
 The [Spring](https://spring.io/) Framework is an application framework and inversion of control container for the Java platform.
 
+### VS Code Shortcuts
+
+![vs-code-cheat-sheet](Images/vs-code-cheat-sheet.jpg)

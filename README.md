@@ -18,7 +18,9 @@
 
 [TypeScript]([https://www.typescriptlang.org/) adds additional syntax to JavaScript to support a tighter integration with your editor. Catch errors early in your editor.
 
-## [Java](Java/README.md)
+### [Java](Java/README.md)
+
+[Java](https://www.java.com/en/) is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible.
 
 ## Frameworks/Libraries
 
@@ -34,6 +36,6 @@
 
 The [Spring](https://spring.io/) Framework is an application framework and inversion of control container for the Java platform.
 
-### VS Code Shortcuts
+## VS Code Shortcuts
 
 ![vs-code-cheat-sheet](Images/vs-code-cheat-sheet.jpg)

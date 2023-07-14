@@ -101,3 +101,45 @@ A “flash of unstyled text” (FOUT) is the phenomenon in which a web page load
 }
 ```
 
+## Scroll Snap
+
+The CSS scroll snap property allows you to provide a more predictable and controlled user experience by controlling the scrolling behavior of a container element by defining snap points (specific positions) within the scrollable area.
+
+```css
+.container {
+	scroll-snap-type: y mandatory;
+}
+
+.container .item {
+	height: 100vh;
+	scroll-snap-align: start;
+}
+```
+
+## Grid Pile
+
+Instead of using `position absolute` you can use a single call CSS grid to "pile" elements inside it on top of each other, then use `justify` and `align` properties to position them.
+
+```css
+.single-cell {
+	display: grid;
+	place-content: center;
+}
+
+/* all elements inside .single-cell will pile on top of each other in the center */
+.single-cell > * {
+	grid-area: 1/1;
+}
+```
+
+## The `:has()` pseudeo-class
+
+The long-awaited `:has()` pseudo-class selects elements that contain other elements that match the selector passed into its arguments. This makes it incredibly useful to write styles for components that may or may not contain certain elements inside, or to select a parent element based on the child elements it contains and apply styles to the parent.
+
+```css
+/* Select the .card element when it contains an <img>. */
+.card:has(img) {
+	flex-direction: row;
+}
+```
+

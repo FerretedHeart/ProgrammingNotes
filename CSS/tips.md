@@ -6,7 +6,7 @@ First, set the root font-size of the HTML element to 62.5%:
 
 ```css
 html {
-	font-size: 62.5%
+  font-size: 62.5%
 }
 ```
 
@@ -22,11 +22,11 @@ Since most browsers render 62.5% font-size at 10px, this means all of your REM f
 
   ```css
   h4 {
-  	font-size: 2.0rem; /* 20px equivalent */
+    font-size: 2.0rem; /* 20px equivalent */
   }
   
   p {
-  	font-size: 1.6rem; /* 16px equivalent */
+    font-size: 1.6rem; /* 16px equivalent */
   }
   ```
 
@@ -37,27 +37,27 @@ Performing calculations on CSS property values can be extremely powerful, especi
 
 ```css
 .element {
-	width: calc(50% - 20px);
-	margin-left: calc(5vw + 10px);
-	font-size: calc(1rem + 0.5vw);
+  width: calc(50% - 20px);
+  margin-left: calc(5vw + 10px);
+  font-size: calc(1rem + 0.5vw);
 }
 
 /* Set the base font size, minimum font size, and scaling factor */
 :root {
-	--base-font-size: 16px;
-	--min-font-size: 14px;
-	--max-font-size: 24px;
-	--scale-factor: 1.5;
+  --base-font-size: 16px;
+  --min-font-size: 14px;
+  --max-font-size: 24px;
+  --scale-factor: 1.5;
 }
 
 /* Use the variables with calc() and clamp() to create fluid fonts */
 body {
-	font-size: calc(var(--min-font-size) + var(--scale-factor) * 1vw);
-	font-size: clamp(
-		var(--min-font-size),
-		var(--base-font-size) + var(--scale-factor) * 1vw,
-		var(--max-font-size)
-	);
+  font-size: calc(var(--min-font-size) + var(--scale-factor) * 1vw);
+  font-size: clamp(
+    var(--min-font-size),
+    var(--base-font-size) + var(--scale-factor) * 1vw,
+    var(--max-font-size)
+  );
 }
 ```
 
@@ -86,18 +86,18 @@ A “flash of unstyled text” (FOUT) is the phenomenon in which a web page load
 ```css
 /* Some system font stock samples */
 .charter {
-	font-family: Charter, Bitstream Charter, serif;
+  font-family: Charter, Bitstream Charter, serif;
 }
 .georgia {
-	font-family: Georgia, Times, Times New Roman, serif;
+  font-family: Georgia, Times, Times New Roman, serif;
 }
 .palatino {
-	font-family: Palatino, Palatino Linotype, Palatino LT STD, Book Antiqua, Georgia, serif;
+  font-family: Palatino, Palatino Linotype, Palatino LT STD, Book Antiqua, Georgia, serif;
 }
 .system {
-	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
-	/* Only supported on Chromium-based browsers and Safari */
-	font-family: system-ui;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  /* Only supported on Chromium-based browsers and Safari */
+  font-family: system-ui;
 }
 ```
 
@@ -107,12 +107,12 @@ The CSS scroll snap property allows you to provide a more predictable and contro
 
 ```css
 .container {
-	scroll-snap-type: y mandatory;
+  scroll-snap-type: y mandatory;
 }
 
 .container .item {
-	height: 100vh;
-	scroll-snap-align: start;
+  height: 100vh;
+  scroll-snap-align: start;
 }
 ```
 
@@ -122,13 +122,13 @@ Instead of using `position absolute` you can use a single call CSS grid to "pile
 
 ```css
 .single-cell {
-	display: grid;
-	place-content: center;
+  display: grid;
+  place-content: center;
 }
 
 /* all elements inside .single-cell will pile on top of each other in the center */
 .single-cell > * {
-	grid-area: 1/1;
+  grid-area: 1/1;
 }
 ```
 
@@ -139,7 +139,70 @@ The long-awaited `:has()` pseudo-class selects elements that contain other eleme
 ```css
 /* Select the .card element when it contains an <img>. */
 .card:has(img) {
-	flex-direction: row;
+  flex-direction: row;
+}
+```
+
+## 3 Ways to Center a DIV
+
+Here's the HTML for the examples:
+
+```html
+<div class="container">
+  <div class="content">
+    <!-- Your content here -->
+  </div>
+</div>
+```
+
+
+
+### Flexbox
+
+With this method, you simply set the container element to display: `flex` and `align-items: center`.
+
+```css
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* optional */
+  height: 100vh; /* optional */
+}
+```
+
+### Position and Transform
+
+Use `position: absolute` and `transform: translate`. This method requires you to set a fixed height on the container element.
+
+```css
+.container {
+  position: relative;
+  height: 500px; /* Set a fixed height */
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Your content styles here */
+}
+```
+
+### Grid
+
+This method involves creating a two-column grid, with the first column set to `auto` and the second column set to `1fr`.
+
+```css
+.container {
+  display: grid;
+  align-items: center;
+  height: 100vh; /* Set a fixed height */
+  grid-template-columns: auto 1fr;
+}
+
+.content {
+  /* Your content styles here */
 }
 ```
 

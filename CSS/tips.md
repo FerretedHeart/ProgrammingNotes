@@ -206,3 +206,30 @@ This method involves creating a two-column grid, with the first column set to `a
 }
 ```
 
+## Animated Background Gradient
+
+Here's a simple, fast way to make a pure CSS animated background gradient.
+
+```css
+body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: bg-gradient 5s ease infinite;
+}
+
+@keygrames bg-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+```
+
+This code will create a subtle angled color animation in the background of the body as shown below.
+
+![gradient](../Images/gradient.jpg)

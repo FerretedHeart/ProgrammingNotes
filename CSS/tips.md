@@ -132,7 +132,28 @@ Instead of using `position absolute` you can use a single call CSS grid to "pile
 }
 ```
 
-## The `:has()` pseudeo-class
+## The `:is()` pseudo-class function
+
+Simplifies complex selector chains and reduces the size of your CSS code.
+
+```css
+/* Instead of doing this.. */
+.container h1,
+.container h2,
+.container h3,
+.container h4,
+.container h5,
+.container h6 {
+  margin-bottom: 1rem;
+}
+
+/* Add the function to achieve the same effect in a more concise way */
+.container :is(h1, h2, h3, h4, h5, h6) {
+  margin-bottom: 1rem;
+}
+```
+
+## The `:has()` pseudo-class function
 
 The long-awaited `:has()` pseudo-class selects elements that contain other elements that match the selector passed into its arguments. This makes it incredibly useful to write styles for components that may or may not contain certain elements inside, or to select a parent element based on the child elements it contains and apply styles to the parent.
 
@@ -233,3 +254,4 @@ body {
 This code will create a subtle angled color animation in the background of the body as shown below.
 
 ![gradient](../Images/gradient.jpg)
+

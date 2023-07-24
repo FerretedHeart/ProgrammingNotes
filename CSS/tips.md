@@ -255,3 +255,16 @@ This code will create a subtle angled color animation in the background of the b
 
 ![gradient](../Images/gradient.jpg)
 
+## Current Color
+
+An often overlooked trick is using the `currentColor` keyword. It will automatically inherit the current element's color value for other properties like `border-color` or `background-color`.
+
+```css
+button {
+  color: #f06;
+  border: 2px solid currentColor;
+  /* border will inherit the color value from the 'color' property */
+}
+```
+
+This is an easy way to reduce the need to repeat color values in your CSS code and keeps it DRY (Don't Repeat Yourself).

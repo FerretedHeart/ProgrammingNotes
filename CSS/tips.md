@@ -164,6 +164,16 @@ The long-awaited `:has()` pseudo-class selects elements that contain other eleme
 }
 ```
 
+This is also a CSS-only approach for parent selectors. For example, let's say you have a paragraph with the class `.child` ad you want to style the parent DIV:
+
+```css
+div:has(>p.child) {
+  border: 2px solid #000;
+}
+```
+
+This basic example will apply a 2px black border around the parent DIV. Keep in mind, full support is not quite there yet in all major browsers to use this trick cautiously.
+
 ## 3 Ways to Center a DIV
 
 Here's the HTML for the examples:

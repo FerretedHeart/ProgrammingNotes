@@ -1,5 +1,7 @@
 # HTML
 
+[Tips and Tricks](HTML/html-tips.md)
+
 HTML is organized into a family tree structure. HTML elements can have parents, grandparents, siblings, children, grandchildren, etc.
 
 ```html

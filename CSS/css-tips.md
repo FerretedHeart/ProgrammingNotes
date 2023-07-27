@@ -1,4 +1,4 @@
-# Tips and Tricks
+# CSS Tips and Tricks
 
 ## Calculating REM Font Sizes
 

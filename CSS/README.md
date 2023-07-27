@@ -2,7 +2,7 @@
 
 [Cascading Style Sheets](https://developer.mozilla.org/en-US/docs/Web/CSS) for describing how elements should look on screen.
 
-[Tips and Tricks](CSS/tips.md)
+[Tips and Tricks](CSS/css-tips.md)
 
 ![css-syntax](css-syntax.png)
 

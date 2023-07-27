@@ -11,3 +11,4 @@ Use the `<details>` and `<summary>` elements to create native, collapsible conte
 </details>
 ```
 
+The `<summary>` element serves as the visible label for the collapsible section. When the user clicks on the `<summary>` element, the hidden content 

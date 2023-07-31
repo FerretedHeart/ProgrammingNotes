@@ -12,3 +12,48 @@ Use the `<details>` and `<summary>` elements to create native, collapsible conte
 ```
 
 The `<summary>` element serves as the visible label for the collapsible section. When the user clicks on the `<summary>` element, the hidden content 
+
+## Scroll Indicator
+
+With barebones code, you can make a scroll indicator that will show users what position of the page they're at as they scroll down. This works excellent for longer content, such as blog articles.
+
+HTML:
+
+```html
+<progress id="scrollProgress"  value="0" max="100"></progress
+```
+
+CSS:
+
+```css
+progress#scrollProgress {
+  width: 100%;
+  height: 5px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+progress#scrollProgress::-webkit-progress-bar { background-color: #eee; }
+progress#scrollProgress::-webkit-progress-value { background-color: #f06; }
+progress#scrollProgress::-moz-progress-bar { background-color: #f06; }
+```
+
+JS:
+
+```javascript
+document.addEventListener('DOMContentLoaded', () => {
+  const progress = document.getElementById('scrollProgress');
+  
+  window.addEventListener('scroll', () => {
+    const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+    const totalHeight = document.body.scrollHeight - window.innerHeight;
+    progress.value = (scrollPos / totalHeight) * 100;
+  })
+})
+```
+
+Final Result:
+
+![html-result](/html-result.jpeg)

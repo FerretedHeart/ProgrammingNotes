@@ -56,4 +56,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 Final Result:
 
-![html-result](/html-result.jpeg)
+## Entities
+
+Commonly used HTML entities:
+
+- Non-breaking space: `&nbsp;`
+- Less than: `&lt;`
+- Greater than: `&gt;`
+- Ampersand: `&amp;`
+- Quotation mark: `&quot;`
+- Apostrophe: `&apos;` (HTML5) or `&#39;` (older HTML versions)
+- Copyright: `&copy;`
+- Registered trademark: `&reg;`
+- Euro sign: `&euro;`
+- Pound sign: `&pound;`
+- Yen sign: `&yen;`
+- Em dash: `&mdash;`
+- En dash: `&ndash;`
+- Ellipsis: `&hellip;`
+- Left single quotation mark: `&lsquo;`
+- Right single quotation mark: `&rsquo;`
+- Left double quotation mark: `&ldquo;`
+- Right double quotation mark: `&rdquo;`
+- Multiplication sign: `&times;`
+- Right arrow: `&rarr;`
+
+ 
+

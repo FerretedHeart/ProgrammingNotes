@@ -278,3 +278,38 @@ button {
 ```
 
 This is an easy way to reduce the need to repeat color values in your CSS code and keeps it DRY (Don't Repeat Yourself).
+
+## Selectors
+
+3 powerful options for targeting the exact elements you want to style.
+
+### ~ General Sibling Selector
+
+The ~ selector targets all sibling elements that come after the selected element, regardless of their position or proximity. It applies the styles to all matching siblings that follow the selected element in the HTML structure.
+
+```css
+h2 ~ p {
+  /* CSS applied to all <p> elements that come after <h2> */
+}
+```
+
+### + Adjacent Sibling Selector
+
+The + selector targets the immediately adjacent sibling element that follows the selected element. It applies the styles only to the first matching sibling immediately next to the selected element.
+
+```css
+h2 + p {
+  /* CSS applied to the first <p> element immediately after <h2> */
+}
+```
+
+### > Child Selector
+
+The > selector targets direct child elements of the selected element. It selects elements that are immediate children and ignores nested elements further down the HTML heirarchy.
+
+```css
+ul > li {
+  /* CSS applied to <li> elements that are direct childnre of <ul> */
+}
+```
+

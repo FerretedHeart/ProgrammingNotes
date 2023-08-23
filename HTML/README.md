@@ -92,3 +92,14 @@ Semantic elements provide information about the content between the opening and 
   - `autoplay`: results in a video automatically playing as soon as the page is loaded
   - `loop`: results in the video continuously playing on repeat
 - `<embed>`- used to incorporate media content into a page and is a self-closing tag (deprecated)
+- `<picture>` - allows for multiple image formats to be defined
+
+  ```html
+  <picture>
+    <source srcset="image.avif" type="image/avif">
+    <source srcset="image.webp" type="image/webp">
+    <img src="image.jpg" alt="Image description">
+  </picture>
+  ```
+
+  

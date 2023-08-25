@@ -337,3 +337,18 @@ Create a loader icon that helps cut the need for another image and give you more
 }
 ```
 
+## Tailwind CSS
+
+### `group-hover`
+
+Use the `group-hover` variant to apply hover styles to child elements within a parent container.
+
+```html
+<div class="group">
+  <button class="group-hover:text-red-500">Hover me!</button>
+  <p class="text-gray-500">Child element</p>
+</div>
+```
+
+By adding the `group` class to a parent container and using the `group-hover` variant on a child elements, you can create interactive hover effects on specific child elements when the parent is hovered. In the demo above, when the parent container is hovered, the button's text color changes to red. What's cool is this feature allows you to apply hover styles to specific elements within a container without requiring additional JavaScript or complex CSS selectors.
+

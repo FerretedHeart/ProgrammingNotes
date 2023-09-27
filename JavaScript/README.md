@@ -4,6 +4,8 @@
 
  [Resources](JavaScript/Resources.md)
 
+[NPM](JavaScript/npm.md)
+
 [Tips and Hints](JavaScript/tips-hints.md)
 
 -  [Arrays](JavaScript/Arrays.md)

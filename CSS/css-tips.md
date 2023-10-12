@@ -1,3 +1,7 @@
+---
+typora-root-url: ./..\Images
+---
+
 # CSS Tips and Tricks
 
 ## Calculating REM Font Sizes
@@ -263,7 +267,7 @@ body {
 
 This code will create a subtle angled color animation in the background of the body as shown below.
 
-![gradient](../Images/gradient.jpg)
+![gradient](/../Images/gradient.jpg)
 
 ## Current Color
 
@@ -336,6 +340,34 @@ Create a loader icon that helps cut the need for another image and give you more
   }
 }
 ```
+
+## Layered Text Effect
+
+Create a neat 3D layered text effect using a little CSS magic. We're going to start with `-webkit-text-stroke`, which will create an outlined font and we'll emphasize that by changing the `color` to transparent. Then we'll use `text-shadow` to create the stacked layer effect.
+
+```css
+body {
+  background: #313859;
+}
+h1 {
+  -webkit-text-stroke: 4px #fff;
+  font-size: 10rem;
+  text-align: center;
+  color: transparent;
+  font-family: sans-serif;
+  font-style: italic;
+  text-shadow:
+    10px 10px 0px #66bbb2,
+    15px 15px 0px #c53b3d,
+    20px 20px 0px #6a2032,
+    35px 35px 18px #1b1f33
+    ;
+}
+```
+
+And below is the final result!
+
+![css-layers](/../Images/css-layers.jpg)
 
 ## Tailwind CSS
 
